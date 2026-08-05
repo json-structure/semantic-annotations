@@ -21,6 +21,9 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
 META = ROOT.parent / "semantic-annotations-v0.json"
+# The worked examples live in the json-structure/primer-and-samples repository,
+# checked out beside this one.
+SAMPLES = ROOT.parent.parent / "primer-and-samples" / "samples" / "semantic-annotations"
 
 DIRECTORIES = [
     "09-orbit-mean-elements",
@@ -147,11 +150,17 @@ def derive(document, keywords):
 
 def main(argv):
     check_only = "--check" in argv[1:]
+
+    if not SAMPLES.is_dir():
+        print("samples not found at %s" % SAMPLES)
+        print("check out json-structure/primer-and-samples beside this repository")
+        return 1
+
     keywords = annotation_keywords() | OTHER_EXTENSION_KEYWORDS
     stale = []
 
     for name in DIRECTORIES:
-        source = ROOT / "real-world" / name / "schema.struct.json"
+        source = SAMPLES / "real-world" / name / "schema.struct.json"
         target = source.with_name("schema-unannotated.struct.json")
         document = json.loads(source.read_text(encoding="utf-8"))
         stripped, dropped = derive(document, keywords)

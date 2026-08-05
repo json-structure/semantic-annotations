@@ -370,6 +370,9 @@ cannot recover from a well-named keyword and were never put to the subject.
 
 ## Running it
 
+The harness reads the worked examples from `json-structure/primer-and-samples`,
+which must be checked out beside this repository.
+
 Build every prompt without calling a model, and read them:
 
 ```
@@ -402,7 +405,7 @@ python run.py --report recorded-run
 Inspect the rubric for one sample:
 
 ```
-python rubric.py ../samples/real-world/20-goes-magnetometer/schema.struct.json
+python rubric.py ../../primer-and-samples/samples/semantic-annotations/real-world/20-goes-magnetometer/schema.struct.json
 ```
 
 Every run directory holds, per sample, the full subject prompt and response for

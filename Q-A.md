@@ -20,7 +20,8 @@ Because none of them annotate a schema. They are data models: to use SOSA you
 restructure your payload into SOSA's shape, and to use SensorThings you adopt
 its API and its entity graph. The overwhelming majority of real event streams
 will never be restructured — the AIS, METAR, GBFS, BMRS, and HFP schemas in
-`samples/real-world/` are the payloads their publishers actually ship, and no
+`samples/semantic-annotations/real-world/` are the payloads their publishers
+actually ship, and no
 publisher is going to reshape them into an observation ontology. This document
 takes the opposite direction: leave the payload exactly as it is, and record
 against it what the payload already means. It is a description mechanism for
@@ -872,7 +873,8 @@ distribution needs the integrity protection the data needs.
 ### 54. Annotated schemas run twice the line count. Who pays that, and what's the evidence they'll keep paying?
 
 The line-count comparison in
-[`samples/real-world/README.md`](samples/real-world/README.md) is the honest
+[`real-world/README.md`](https://github.com/json-structure/primer-and-samples/blob/main/samples/semantic-annotations/real-world/README.md)
+is the honest
 version of the cost, and the answer is that it is paid once by the schema author
 and recovered many times by consumers who would otherwise each reconstruct the
 same knowledge from documentation — or fail to. There is no evidence yet that

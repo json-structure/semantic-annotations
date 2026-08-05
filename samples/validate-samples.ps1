@@ -31,11 +31,15 @@ param()
 
 $ErrorActionPreference = 'Stop'
 
-$samplesRoot = $PSScriptRoot
-$repoRoot = Split-Path -Parent $samplesRoot
+$toolsRoot = $PSScriptRoot
+$repoRoot = Split-Path -Parent $toolsRoot
+$workspaceRoot = Split-Path -Parent $repoRoot
+# The worked examples live in the json-structure/primer-and-samples repository,
+# checked out beside this one.
+$samplesRoot = Join-Path $workspaceRoot 'primer-and-samples/samples/semantic-annotations'
 $metaSchema = Join-Path $repoRoot 'semantic-annotations-v0.json'
-$extendedMeta = Join-Path (Split-Path -Parent $repoRoot) 'meta/extended/v0/index.json'
-$coreMeta = Join-Path (Split-Path -Parent $repoRoot) 'meta/core/v0/index.json'
+$extendedMeta = Join-Path $workspaceRoot 'meta/extended/v0/index.json'
+$coreMeta = Join-Path $workspaceRoot 'meta/core/v0/index.json'
 
 $failures = 0
 
@@ -64,6 +68,12 @@ else {
     Write-Host '  [skip] semantic-annotations-v0.json (json-structure/meta not checked out beside this repository)' -ForegroundColor Yellow
 }
 
+if (-not (Test-Path $samplesRoot)) {
+    Write-Host "Samples not found at $samplesRoot" -ForegroundColor Red
+    Write-Host 'Check out json-structure/primer-and-samples beside this repository.' -ForegroundColor Red
+    exit 1
+}
+
 $schemas = Get-ChildItem -Path $samplesRoot -Recurse -Filter 'schema.struct.json' | Sort-Object FullName
 
 Write-Host 'Sample schemas' -ForegroundColor Cyan
@@ -84,7 +94,7 @@ foreach ($schema in $schemas) {
 }
 
 Write-Host 'Semantic annotations' -ForegroundColor Cyan
-$checker = Join-Path $samplesRoot 'check-annotations.py'
+$checker = Join-Path $toolsRoot 'check-annotations.py'
 $python = @('py', 'python3', 'python') |
     Where-Object { Get-Command $_ -ErrorAction SilentlyContinue } |
     Select-Object -First 1
@@ -115,7 +125,7 @@ if (-not $python) {
     Write-Host '  [skip] up-to-date check (no Python interpreter on PATH)' -ForegroundColor Yellow
 }
 else {
-    $output = & $python (Join-Path $samplesRoot 'make-unannotated.py') --check 2>&1
+    $output = & $python (Join-Path $toolsRoot 'make-unannotated.py') --check 2>&1
     Write-Result ($LASTEXITCODE -eq 0) 'derived from the annotated schemas' $output
 }
 

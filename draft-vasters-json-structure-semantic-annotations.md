@@ -1,18 +1,22 @@
 ---
 title: "JSON Structure: Semantic and Reference-System Annotations"
 abbrev: "JSON Structure Semantic Annotations"
-category: exp
+category: std
 
 docname: draft-vasters-json-structure-semantic-annotations-latest
-submissiontype: IETF
+submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
-date: 2026-07-28
-consensus: false
+date: 2026-08-05
+consensus: true
 v: 3
 area: Web and Internet Transport
 workgroup: Building Blocks for HTTP APIs
 keyword: Internet-Draft
 venue:
+  group: TBD
+  type: Working Group
+  mail: TBD
+  arch: TBD
   github: "json-structure/semantic-annotations"
   latest: "https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-semantic-annotations.html"
 

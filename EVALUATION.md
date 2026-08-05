@@ -5,7 +5,8 @@ Structure: Semantic and Reference-System Annotations*: that the annotations make
 to a machine reader on its own**, without access to the specification, the
 surrounding repository, or a human explaining the domain.
 
-The test was run over **all 43 worked examples** in [`samples/`](samples/)
+The test was run over **all 43 worked examples** in
+[`samples/semantic-annotations/`](https://github.com/json-structure/primer-and-samples/tree/main/samples/semantic-annotations)
 (15 teaching samples plus 28 real-world samples). Each sample was handed to an
 isolated language model that saw nothing but the sample's own schema and one
 example instance.

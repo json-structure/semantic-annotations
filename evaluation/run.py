@@ -58,7 +58,10 @@ import models
 import rubric
 
 HERE = pathlib.Path(__file__).resolve().parent
-SAMPLES = HERE.parent / "samples"
+TOOLS = HERE.parent / "samples"
+# The worked examples live in the json-structure/primer-and-samples repository,
+# checked out beside this one.
+SAMPLES = HERE.parent.parent / "primer-and-samples" / "samples" / "semantic-annotations"
 PROMPTS = HERE / "prompts"
 
 ARM_BARE = "bare"            # a) types and member names, no prose, no annotations
@@ -90,7 +93,7 @@ QUALITY_SCALES = ("derived", "useful", "executable")
 
 def _load_stripper():
     """Reuse the committed unannotated-companion generator, hyphenated name and all."""
-    path = SAMPLES / "make-unannotated.py"
+    path = TOOLS / "make-unannotated.py"
     spec = importlib.util.spec_from_file_location("make_unannotated", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -171,6 +174,11 @@ class Sample:
 
 
 def discover(selectors: list[str]) -> list[Sample]:
+    if not SAMPLES.is_dir():
+        raise SystemExit(
+            f"samples not found at {SAMPLES}\n"
+            "check out json-structure/primer-and-samples beside this repository"
+        )
     found = []
     for schema in sorted(SAMPLES.rglob("schema.struct.json")):
         instance = schema.with_name("example.json")
