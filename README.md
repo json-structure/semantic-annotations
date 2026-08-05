@@ -5,10 +5,10 @@
 This is the working area for the individual Internet-Draft, "JSON Structure:
 Semantic and Reference-System Annotations".
 
-* [Editor's Copy](https://json-structure.github.io/semantic-annotations/#go.draft-vasters-json-structure-characteristics.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-vasters-json-structure-characteristics)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-characteristics)
-* [Compare Editor's Copy to Individual Draft](https://json-structure.github.io/semantic-annotations/#go.draft-vasters-json-structure-characteristics.diff)
+* [Editor's Copy](https://json-structure.github.io/semantic-annotations/#go.draft-vasters-json-structure-semantic-annotations.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-vasters-json-structure-semantic-annotations)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-semantic-annotations)
+* [Compare Editor's Copy to Individual Draft](https://json-structure.github.io/semantic-annotations/#go.draft-vasters-json-structure-semantic-annotations.diff)
 
 
 ## Contributing

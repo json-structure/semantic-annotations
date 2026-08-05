@@ -22,13 +22,13 @@
   },
   "$root": "#/definitions/SchemaDocument",
   "name": "JSONStructureSemanticAnnotations",
-  "description": "Meta-schema for JSON Structure: Characteristics. It validates the shape of each annotation defined by that specification: the presence and form of its members, the enumerations the specification states are closed, and the form required of a reference for the accompanying kind. It does not express a rule whose subject lies outside the annotated node.",
+  "description": "Meta-schema for JSON Structure: Semantic and Reference-System Annotations. It validates the shape of each annotation defined by that specification: the presence and form of its members, the enumerations the specification states are closed, and the form required of a reference for the accompanying kind. It does not express a rule whose subject lies outside the annotated node.",
   "definitions": {
     "features": {
       "ConceptsAddIn": {
         "name": "ConceptsAddIn",
         "abstract": true,
-        "description": "Vocabulary characteristics. concepts MAY occur on a type definition and on a property, collection item, map value, or choice member schema.",
+        "description": "Vocabulary annotations. concepts MAY occur on a type definition and on a property, collection item, map value, or choice member schema.",
         "$extends": "#/definitions/NoType",
         "type": "object",
         "properties": {
@@ -36,7 +36,7 @@
             "type": "array",
             "items": {
               "type": {
-                "$ref": "#/definitions/characteristics/Concept"
+                "$ref": "#/definitions/annotations/Concept"
               }
             },
             "minItems": 1,
@@ -48,73 +48,73 @@
       "ObservationPropertyAddIn": {
         "name": "ObservationAddIn",
         "abstract": true,
-        "description": "Observation and temporal characteristics carried directly on a property schema.",
+        "description": "Observation and temporal annotations carried directly on a property schema.",
         "$extends": "#/definitions/Property",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             },
             "description": "Identity of the observable that a result member carries."
           },
           "semanticRole": {
             "type": {
-              "$ref": "#/definitions/characteristics/SemanticRole"
+              "$ref": "#/definitions/annotations/SemanticRole"
             },
             "description": "Role the annotated member plays in an observation record."
           },
           "derivation": {
             "type": {
-              "$ref": "#/definitions/characteristics/Derivation"
+              "$ref": "#/definitions/annotations/Derivation"
             },
             "description": "How the annotated value was obtained."
           },
           "statistic": {
             "type": {
-              "$ref": "#/definitions/characteristics/Statistic"
+              "$ref": "#/definitions/annotations/Statistic"
             },
             "description": "Summary function applied. Present if and only if derivation is 'statistic'."
           },
           "phenomenonTimeRelation": {
             "type": {
-              "$ref": "#/definitions/characteristics/PhenomenonTimeRelation"
+              "$ref": "#/definitions/annotations/PhenomenonTimeRelation"
             },
             "description": "How the annotated value relates to the phenomenon time of its record."
           },
           "supportPeriod": {
             "type": {
-              "$ref": "#/definitions/characteristics/SupportPeriod"
+              "$ref": "#/definitions/annotations/SupportPeriod"
             },
             "description": "Length of the phenomenon-time period the annotated value characterizes, and which boundary of it the anchoring position occupies. Permitted only where phenomenonTimeRelation is 'interval' or 'accumulation'."
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             },
             "description": "Temporal reference system in which the annotated position is expressed."
           },
           "cadence": {
             "type": {
-              "$ref": "#/definitions/characteristics/Cadence"
+              "$ref": "#/definitions/annotations/Cadence"
             },
             "description": "Expected recurrence pattern of the annotated temporal position."
           },
           "referenceRole": {
             "type": {
-              "$ref": "#/definitions/characteristics/ReferenceRole"
+              "$ref": "#/definitions/annotations/ReferenceRole"
             },
             "description": "Role the annotated member plays within a meta-type."
           },
           "codedValues": {
             "type": {
-              "$ref": "#/definitions/characteristics/CodedValues"
+              "$ref": "#/definitions/annotations/CodedValues"
             },
             "description": "External code list the annotated coded value is drawn from."
           },
           "measurementConditioning": {
             "type": {
-              "$ref": "#/definitions/characteristics/MeasurementConditioning"
+              "$ref": "#/definitions/annotations/MeasurementConditioning"
             },
             "description": "Frequency weighting, time weighting, and level reference the annotated scalar measurement carries."
           }
@@ -124,48 +124,48 @@
       "ObservationArrayAddIn": {
         "name": "ObservationAddIn",
         "abstract": true,
-        "description": "Observation and temporal characteristics carried on an array type, applying to its items.",
+        "description": "Observation and temporal annotations carried on an array type, applying to its items.",
         "$extends": "#/definitions/ArrayType",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             }
           },
           "semanticRole": {
             "type": {
-              "$ref": "#/definitions/characteristics/SemanticRole"
+              "$ref": "#/definitions/annotations/SemanticRole"
             }
           },
           "derivation": {
             "type": {
-              "$ref": "#/definitions/characteristics/Derivation"
+              "$ref": "#/definitions/annotations/Derivation"
             }
           },
           "statistic": {
             "type": {
-              "$ref": "#/definitions/characteristics/Statistic"
+              "$ref": "#/definitions/annotations/Statistic"
             }
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             }
           },
           "cadence": {
             "type": {
-              "$ref": "#/definitions/characteristics/Cadence"
+              "$ref": "#/definitions/annotations/Cadence"
             }
           },
           "codedValues": {
             "type": {
-              "$ref": "#/definitions/characteristics/CodedValues"
+              "$ref": "#/definitions/annotations/CodedValues"
             }
           },
           "measurementConditioning": {
             "type": {
-              "$ref": "#/definitions/characteristics/MeasurementConditioning"
+              "$ref": "#/definitions/annotations/MeasurementConditioning"
             }
           }
         },
@@ -174,48 +174,48 @@
       "ObservationSetAddIn": {
         "name": "ObservationAddIn",
         "abstract": true,
-        "description": "Observation and temporal characteristics carried on a set type, applying to its items.",
+        "description": "Observation and temporal annotations carried on a set type, applying to its items.",
         "$extends": "#/definitions/SetType",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             }
           },
           "semanticRole": {
             "type": {
-              "$ref": "#/definitions/characteristics/SemanticRole"
+              "$ref": "#/definitions/annotations/SemanticRole"
             }
           },
           "derivation": {
             "type": {
-              "$ref": "#/definitions/characteristics/Derivation"
+              "$ref": "#/definitions/annotations/Derivation"
             }
           },
           "statistic": {
             "type": {
-              "$ref": "#/definitions/characteristics/Statistic"
+              "$ref": "#/definitions/annotations/Statistic"
             }
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             }
           },
           "cadence": {
             "type": {
-              "$ref": "#/definitions/characteristics/Cadence"
+              "$ref": "#/definitions/annotations/Cadence"
             }
           },
           "codedValues": {
             "type": {
-              "$ref": "#/definitions/characteristics/CodedValues"
+              "$ref": "#/definitions/annotations/CodedValues"
             }
           },
           "measurementConditioning": {
             "type": {
-              "$ref": "#/definitions/characteristics/MeasurementConditioning"
+              "$ref": "#/definitions/annotations/MeasurementConditioning"
             }
           }
         },
@@ -224,48 +224,48 @@
       "ObservationMapAddIn": {
         "name": "ObservationAddIn",
         "abstract": true,
-        "description": "Observation and temporal characteristics carried on a map type, applying to its values.",
+        "description": "Observation and temporal annotations carried on a map type, applying to its values.",
         "$extends": "#/definitions/MapType",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             }
           },
           "semanticRole": {
             "type": {
-              "$ref": "#/definitions/characteristics/SemanticRole"
+              "$ref": "#/definitions/annotations/SemanticRole"
             }
           },
           "derivation": {
             "type": {
-              "$ref": "#/definitions/characteristics/Derivation"
+              "$ref": "#/definitions/annotations/Derivation"
             }
           },
           "statistic": {
             "type": {
-              "$ref": "#/definitions/characteristics/Statistic"
+              "$ref": "#/definitions/annotations/Statistic"
             }
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             }
           },
           "cadence": {
             "type": {
-              "$ref": "#/definitions/characteristics/Cadence"
+              "$ref": "#/definitions/annotations/Cadence"
             }
           },
           "codedValues": {
             "type": {
-              "$ref": "#/definitions/characteristics/CodedValues"
+              "$ref": "#/definitions/annotations/CodedValues"
             }
           },
           "measurementConditioning": {
             "type": {
-              "$ref": "#/definitions/characteristics/MeasurementConditioning"
+              "$ref": "#/definitions/annotations/MeasurementConditioning"
             }
           }
         },
@@ -274,48 +274,48 @@
       "ObservationChoiceAddIn": {
         "name": "ObservationAddIn",
         "abstract": true,
-        "description": "Observation and temporal characteristics carried on a choice type, applying to its members.",
+        "description": "Observation and temporal annotations carried on a choice type, applying to its members.",
         "$extends": "#/definitions/ChoiceType",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             }
           },
           "semanticRole": {
             "type": {
-              "$ref": "#/definitions/characteristics/SemanticRole"
+              "$ref": "#/definitions/annotations/SemanticRole"
             }
           },
           "derivation": {
             "type": {
-              "$ref": "#/definitions/characteristics/Derivation"
+              "$ref": "#/definitions/annotations/Derivation"
             }
           },
           "statistic": {
             "type": {
-              "$ref": "#/definitions/characteristics/Statistic"
+              "$ref": "#/definitions/annotations/Statistic"
             }
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             }
           },
           "cadence": {
             "type": {
-              "$ref": "#/definitions/characteristics/Cadence"
+              "$ref": "#/definitions/annotations/Cadence"
             }
           },
           "codedValues": {
             "type": {
-              "$ref": "#/definitions/characteristics/CodedValues"
+              "$ref": "#/definitions/annotations/CodedValues"
             }
           },
           "measurementConditioning": {
             "type": {
-              "$ref": "#/definitions/characteristics/MeasurementConditioning"
+              "$ref": "#/definitions/annotations/MeasurementConditioning"
             }
           }
         },
@@ -324,67 +324,67 @@
       "ObservationRecordObjectAddIn": {
         "name": "ObservationRecordAddIn",
         "abstract": true,
-        "description": "Characteristics that an object type carries and that bind existing members of it.",
+        "description": "Annotations that an object type carries and that bind existing members of it.",
         "$extends": "#/definitions/ObjectType",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             },
             "description": "Identity of the observable that the annotated observation record describes."
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             },
             "description": "Temporal reference system of a temporal type, binding an existing member."
           },
           "coordinateReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/CoordinateReferenceSystem"
+              "$ref": "#/definitions/annotations/CoordinateReferenceSystem"
             },
             "description": "Spatial coordinate reference system, binding existing members as ordered coordinates."
           },
           "vectorReferenceFrames": {
             "type": {
-              "$ref": "#/definitions/characteristics/VectorReferenceFrames"
+              "$ref": "#/definitions/annotations/VectorReferenceFrames"
             },
             "description": "Reference frames on whose axes the components of vector quantities are resolved, binding existing members as ordered components."
           },
           "tensorReferenceFrames": {
             "type": {
-              "$ref": "#/definitions/characteristics/TensorReferenceFrames"
+              "$ref": "#/definitions/annotations/TensorReferenceFrames"
             },
             "description": "Reference frames on whose axes the components of tensor quantities are resolved, binding existing members as indexed components."
           },
           "frameTransforms": {
             "type": {
-              "$ref": "#/definitions/characteristics/FrameTransforms"
+              "$ref": "#/definitions/annotations/FrameTransforms"
             },
             "description": "Transformations from one reference frame to another, binding existing members as their components."
           },
           "linearReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/LinearReferenceSystem"
+              "$ref": "#/definitions/annotations/LinearReferenceSystem"
             },
             "description": "Linear reference system, binding existing members as linear element, measure, and direction."
           },
           "colorSpaces": {
             "type": {
-              "$ref": "#/definitions/characteristics/ColorSpaces"
+              "$ref": "#/definitions/annotations/ColorSpaces"
             },
             "description": "Color spaces in which channel values are expressed, binding existing members as ordered channels."
           },
           "audioChannels": {
             "type": {
-              "$ref": "#/definitions/characteristics/AudioChannels"
+              "$ref": "#/definitions/annotations/AudioChannels"
             },
             "description": "Audio channel groups in which sample values are interpreted, binding existing members as ordered channels."
           },
           "spectralBands": {
             "type": {
-              "$ref": "#/definitions/characteristics/SpectralBands"
+              "$ref": "#/definitions/annotations/SpectralBands"
             },
             "description": "Spectral band sets onto which multiband components are resolved, binding existing members as ordered bands."
           }
@@ -394,69 +394,69 @@
       "ObservationRecordTupleAddIn": {
         "name": "ObservationRecordAddIn",
         "abstract": true,
-        "description": "Characteristics that a tuple type carries and that bind existing members of it.",
+        "description": "Annotations that a tuple type carries and that bind existing members of it.",
         "$extends": "#/definitions/TupleType",
         "type": "object",
         "properties": {
           "observedProperty": {
             "type": {
-              "$ref": "#/definitions/characteristics/ObservedProperty"
+              "$ref": "#/definitions/annotations/ObservedProperty"
             }
           },
           "temporalReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/TemporalReferenceSystem"
+              "$ref": "#/definitions/annotations/TemporalReferenceSystem"
             }
           },
           "coordinateReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/CoordinateReferenceSystem"
+              "$ref": "#/definitions/annotations/CoordinateReferenceSystem"
             }
           },
           "vectorReferenceFrames": {
             "type": {
-              "$ref": "#/definitions/characteristics/VectorReferenceFrames"
+              "$ref": "#/definitions/annotations/VectorReferenceFrames"
             }
           },
           "tensorReferenceFrames": {
             "type": {
-              "$ref": "#/definitions/characteristics/TensorReferenceFrames"
+              "$ref": "#/definitions/annotations/TensorReferenceFrames"
             }
           },
           "frameTransforms": {
             "type": {
-              "$ref": "#/definitions/characteristics/FrameTransforms"
+              "$ref": "#/definitions/annotations/FrameTransforms"
             }
           },
           "linearReferenceSystem": {
             "type": {
-              "$ref": "#/definitions/characteristics/LinearReferenceSystem"
+              "$ref": "#/definitions/annotations/LinearReferenceSystem"
             }
           },
           "colorSpaces": {
             "type": {
-              "$ref": "#/definitions/characteristics/ColorSpaces"
+              "$ref": "#/definitions/annotations/ColorSpaces"
             }
           },
           "audioChannels": {
             "type": {
-              "$ref": "#/definitions/characteristics/AudioChannels"
+              "$ref": "#/definitions/annotations/AudioChannels"
             }
           },
           "spectralBands": {
             "type": {
-              "$ref": "#/definitions/characteristics/SpectralBands"
+              "$ref": "#/definitions/annotations/SpectralBands"
             }
           }
         },
         "additionalProperties": false
       }
     },
-    "characteristics": {
+    "annotations": {
       "ReferencedDefinition": {
         "abstract": true,
         "type": "object",
-        "description": "Abstract base for a characteristic that identifies a definition by reference and classifies it by kind.",
+        "description": "Abstract base for an annotation that identifies a definition by reference and classifies it by kind.",
         "properties": {
           "reference": {
             "type": [
@@ -478,7 +478,7 @@
         ]
       },
       "Concept": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "One external term identity. The kind enumeration is open.",
         "properties": {
@@ -490,7 +490,7 @@
         "additionalProperties": false
       },
       "ObservedProperty": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Identity of an observable. The kind enumeration is open.",
         "properties": {
@@ -586,10 +586,10 @@
       "Statistic": {
         "type": [
           {
-            "$ref": "#/definitions/characteristics/UnparameterizedStatistic"
+            "$ref": "#/definitions/annotations/UnparameterizedStatistic"
           },
           {
-            "$ref": "#/definitions/characteristics/ParameterizedStatistic"
+            "$ref": "#/definitions/annotations/ParameterizedStatistic"
           }
         ],
         "description": "Summary function that produced a result from a set of values. The string form names a function that takes no parameter; the object form names a parameterized function and carries its parameter."
@@ -632,7 +632,7 @@
           },
           "anchor": {
             "type": {
-              "$ref": "#/definitions/characteristics/SupportPeriodAnchor"
+              "$ref": "#/definitions/annotations/SupportPeriodAnchor"
             },
             "description": "Whether the anchoring position opens or closes the period."
           }
@@ -690,16 +690,16 @@
       "Cadence": {
         "type": [
           {
-            "$ref": "#/definitions/characteristics/FixedCadence"
+            "$ref": "#/definitions/annotations/FixedCadence"
           },
           {
-            "$ref": "#/definitions/characteristics/UnscheduledCadence"
+            "$ref": "#/definitions/annotations/UnscheduledCadence"
           }
         ],
         "description": "Expected recurrence pattern of a temporal position."
       },
       "TemporalReferenceSystem": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Temporal reference system in which a position is expressed.",
         "properties": {
@@ -713,7 +713,7 @@
           },
           "sortOrder": {
             "type": {
-              "$ref": "#/definitions/characteristics/SortOrder"
+              "$ref": "#/definitions/annotations/SortOrder"
             },
             "description": "Direction of the encoded ordering relative to time. Defaults to 'forward'."
           }
@@ -721,7 +721,7 @@
         "additionalProperties": false
       },
       "CoordinateReferenceSystem": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Spatial coordinate reference system binding existing members as ordered coordinates.",
         "properties": {
@@ -745,7 +745,7 @@
         "additionalProperties": false
       },
       "VectorReferenceFrame": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "One reference frame on whose axes the components of a vector quantity are resolved, binding existing members as ordered components.",
         "properties": {
@@ -764,7 +764,7 @@
           },
           "variance": {
             "type": {
-              "$ref": "#/definitions/characteristics/Variance"
+              "$ref": "#/definitions/annotations/Variance"
             },
             "description": "How the components respond to a change of frame. Defaults to 'contravariant'."
           }
@@ -779,7 +779,7 @@
         "description": "Non-empty array of vector reference frames, one per vector quantity carried by the annotated type.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/VectorReferenceFrame"
+            "$ref": "#/definitions/annotations/VectorReferenceFrame"
           }
         },
         "minItems": 1
@@ -793,7 +793,7 @@
         ]
       },
       "FrameReference": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Reference to one reference frame, by absolute URI or by type reference to a meta-type.",
         "properties": {
@@ -803,7 +803,7 @@
           },
           "variance": {
             "type": {
-              "$ref": "#/definitions/characteristics/Variance"
+              "$ref": "#/definitions/annotations/Variance"
             },
             "description": "How the index in this position responds to a change of frame. Defaults to 'contravariant'."
           }
@@ -839,7 +839,7 @@
         "description": "Non-empty array of indexed tensor components.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/TensorComponent"
+            "$ref": "#/definitions/annotations/TensorComponent"
           }
         },
         "minItems": 1
@@ -852,7 +852,7 @@
             "type": "array",
             "items": {
               "type": {
-                "$ref": "#/definitions/characteristics/FrameReference"
+                "$ref": "#/definitions/annotations/FrameReference"
               }
             },
             "minItems": 2,
@@ -862,7 +862,7 @@
             "type": [
               "string",
               {
-                "$ref": "#/definitions/characteristics/TensorComponents"
+                "$ref": "#/definitions/annotations/TensorComponents"
               }
             ],
             "description": "Either the name of a member holding an array nested to the rank of the tensor, first frame outermost, or an array of components each stating its own index."
@@ -888,7 +888,7 @@
         "description": "Non-empty array of tensor quantities carried by the annotated type.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/TensorReferenceFrame"
+            "$ref": "#/definitions/annotations/TensorReferenceFrame"
           }
         },
         "minItems": 1
@@ -938,19 +938,19 @@
         "properties": {
           "from": {
             "type": {
-              "$ref": "#/definitions/characteristics/FrameReference"
+              "$ref": "#/definitions/annotations/FrameReference"
             },
             "description": "Frame the transformation carries coordinates out of. variance is prohibited here."
           },
           "to": {
             "type": {
-              "$ref": "#/definitions/characteristics/FrameReference"
+              "$ref": "#/definitions/annotations/FrameReference"
             },
             "description": "Frame the transformation carries coordinates into. variance is prohibited here."
           },
           "encoding": {
             "type": {
-              "$ref": "#/definitions/characteristics/TransformEncoding"
+              "$ref": "#/definitions/annotations/TransformEncoding"
             },
             "description": "Arrangement of numbers that carries the transformation."
           },
@@ -958,17 +958,17 @@
             "type": [
               "string",
               {
-                "$ref": "#/definitions/characteristics/TransformComponentNames"
+                "$ref": "#/definitions/annotations/TransformComponentNames"
               },
               {
-                "$ref": "#/definitions/characteristics/TensorComponents"
+                "$ref": "#/definitions/annotations/TensorComponents"
               }
             ],
             "description": "For quaternion, axisAngle, and eulerAngles, an ordered array of member names. For rotationMatrix and homogeneousMatrix, either the name of a member holding an array nested twice, row outermost, or an array of components each stating its own index, row first."
           },
           "rotationSequence": {
             "type": {
-              "$ref": "#/definitions/characteristics/RotationSequence"
+              "$ref": "#/definitions/annotations/RotationSequence"
             },
             "description": "Axis sequence of the three intrinsic rotations. Present if and only if encoding is 'eulerAngles'."
           },
@@ -996,7 +996,7 @@
         "description": "Non-empty array of transformations carried by the annotated type.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/FrameTransform"
+            "$ref": "#/definitions/annotations/FrameTransform"
           }
         },
         "minItems": 1
@@ -1018,7 +1018,7 @@
         ]
       },
       "ColorSpace": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Color space in which channel values held in members of the annotated type are expressed.",
         "properties": {
@@ -1051,13 +1051,13 @@
           },
           "alphaMode": {
             "type": {
-              "$ref": "#/definitions/characteristics/AlphaMode"
+              "$ref": "#/definitions/annotations/AlphaMode"
             },
             "description": "How the channel values stand to the opacity value. Permitted only where alpha is present. Defaults to 'straight'."
           },
           "transfer": {
             "type": {
-              "$ref": "#/definitions/characteristics/ColorTransfer"
+              "$ref": "#/definitions/annotations/ColorTransfer"
             },
             "description": "Whether the channel values carry the transfer function of the identified space. Defaults to 'asDefined'."
           },
@@ -1080,13 +1080,13 @@
         "description": "Non-empty array of color spaces carried by the annotated type.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/ColorSpace"
+            "$ref": "#/definitions/annotations/ColorSpace"
           }
         },
         "minItems": 1
       },
       "AudioChannel": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "One audio channel group. The kind enumeration is open; levelReference and encoding are closed.",
         "properties": {
@@ -1105,13 +1105,13 @@
           },
           "levelReference": {
             "type": {
-              "$ref": "#/definitions/characteristics/LevelReference"
+              "$ref": "#/definitions/annotations/LevelReference"
             },
             "description": "What the sample amplitudes are relative to. Defaults to 'fullScale'."
           },
           "encoding": {
             "type": {
-              "$ref": "#/definitions/characteristics/AudioEncoding"
+              "$ref": "#/definitions/annotations/AudioEncoding"
             },
             "description": "How the stored numbers stand to amplitude. Defaults to 'linear'."
           }
@@ -1126,7 +1126,7 @@
         "description": "Non-empty array of audio channel groups carried by the annotated type.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/AudioChannel"
+            "$ref": "#/definitions/annotations/AudioChannel"
           }
         },
         "minItems": 1
@@ -1140,7 +1140,7 @@
         "description": "How the stored numbers stand to amplitude. Values defined by the specification are 'linear', 'float', 'aLaw', and 'muLaw'. Any other value is an absolute URI identifying another encoding. The enumeration is open."
       },
       "SpectralBand": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "One spectral band set. The kind and calibration enumerations are open.",
         "properties": {
@@ -1172,13 +1172,13 @@
         "description": "Non-empty array of spectral band sets carried by the annotated type.",
         "items": {
           "type": {
-            "$ref": "#/definitions/characteristics/SpectralBand"
+            "$ref": "#/definitions/annotations/SpectralBand"
           }
         },
         "minItems": 1
       },
       "CodedValues": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Code list the annotated coded value is drawn from. The kind enumeration is open.",
         "properties": {
@@ -1203,7 +1203,7 @@
           },
           "levelReference": {
             "type": {
-              "$ref": "#/definitions/characteristics/LevelReference"
+              "$ref": "#/definitions/annotations/LevelReference"
             },
             "description": "What the level is relative to."
           }
@@ -1212,7 +1212,7 @@
         "additionalProperties": false
       },
       "LinearReferenceSystem": {
-        "$extends": "#/definitions/characteristics/ReferencedDefinition",
+        "$extends": "#/definitions/annotations/ReferencedDefinition",
         "type": "object",
         "description": "Linear reference system binding existing members as linear element, measure, and direction.",
         "properties": {

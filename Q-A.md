@@ -8,7 +8,7 @@ lands, it says so, and the final section lists every concession as a work item
 rather than burying it.
 
 Section references are to
-[`draft-vasters-json-structure-characteristics.md`](draft-vasters-json-structure-characteristics.md).
+[`draft-vasters-json-structure-semantic-annotations.md`](draft-vasters-json-structure-semantic-annotations.md).
 
 ---
 

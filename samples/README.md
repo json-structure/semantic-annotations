@@ -1,7 +1,7 @@
 # JSON Structure: Semantic and Reference-System Annotations Samples
 
 Fifteen worked examples of the annotations defined by
-[JSON Structure: Semantic and Reference-System Annotations](../draft-vasters-json-structure-characteristics.md).
+[JSON Structure: Semantic and Reference-System Annotations](../draft-vasters-json-structure-semantic-annotations.md).
 Each directory holds a `schema.struct.json` and an `example.json` instance that
 conforms to it.
 

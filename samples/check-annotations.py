@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Check JSON Structure Characteristics annotations against the extension meta-schema.
+"""Check JSON Structure semantic annotations against the extension meta-schema.
 
 The JSON Structure SDK validators check a schema document against Core and the
 extensions they know about, but they ignore annotation keywords contributed by an
-add-in they do not implement. This script closes that gap for the Characteristics
-extension: it reads ``semantic-annotations-v0.json``, derives the keyword set and the
+add-in they do not implement. This script closes that gap for the semantic
+annotations extension: it reads ``semantic-annotations-v0.json``, derives the keyword set and the
 value types from the add-ins listed under ``$offers``, and validates every
 annotation found in a sample schema against those definitions.
 
@@ -59,7 +59,7 @@ PROPERTY_KINDS = {
 
 
 class MetaSchema:
-    """The Characteristics add-ins and value types, read from the meta-schema."""
+    """The semantic annotation add-ins and value types, read from the meta-schema."""
 
     def __init__(self, doc):
         self.doc = doc

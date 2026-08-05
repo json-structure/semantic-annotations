@@ -3,7 +3,7 @@ title: "JSON Structure: Semantic and Reference-System Annotations"
 abbrev: "JSON Structure Semantic Annotations"
 category: exp
 
-docname: draft-vasters-json-structure-characteristics-latest
+docname: draft-vasters-json-structure-semantic-annotations-latest
 submissiontype: IETF
 number:
 date: 2026-07-28
@@ -14,7 +14,7 @@ workgroup: Building Blocks for HTTP APIs
 keyword: Internet-Draft
 venue:
   github: "json-structure/semantic-annotations"
-  latest: "https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-characteristics.html"
+  latest: "https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-semantic-annotations.html"
 
 author:
   - fullname: Clemens Vasters
@@ -5125,7 +5125,7 @@ unresolved `reference` is indeterminate rather than incorrect. Under `kind`
 `type` the list is a meta-type in the schema and `reference` is the type
 reference `{ "$ref": <JSON Pointer> }`, not a URI.
 
-# Changes from draft-vasters-json-structure-characteristics-00
+# Changes from draft-vasters-json-structure-semantic-annotations-00
 {:numbered="false"}
 
 - Initial version.

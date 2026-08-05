@@ -83,7 +83,7 @@ foreach ($schema in $schemas) {
     Write-Result ($LASTEXITCODE -eq 0) $schema.Directory.Name $output
 }
 
-Write-Host 'Characteristics annotations' -ForegroundColor Cyan
+Write-Host 'Semantic annotations' -ForegroundColor Cyan
 $checker = Join-Path $samplesRoot 'check-annotations.py'
 $python = @('py', 'python3', 'python') |
     Where-Object { Get-Command $_ -ErrorAction SilentlyContinue } |

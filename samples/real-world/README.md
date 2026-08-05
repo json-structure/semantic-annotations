@@ -6,7 +6,7 @@ documents in the
 [real-time-sources](https://github.com/clemensv/real-time-sources) feeders; the
 last few were transcribed from published record formats that have no schema of
 their own. All of them are annotated with the keywords defined by
-[JSON Structure: Semantic and Reference-System Annotations](../../draft-vasters-json-structure-characteristics.md).
+[JSON Structure: Semantic and Reference-System Annotations](../../draft-vasters-json-structure-semantic-annotations.md).
 
 They differ from the [teaching samples](../) one directory up: those are written
 to isolate one part of the annotation model each, whereas these start from a

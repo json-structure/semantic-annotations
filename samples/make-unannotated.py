@@ -31,8 +31,8 @@ DIRECTORIES = [
     "20-goes-magnetometer",
 ]
 
-# Keywords contributed by extension add-ins other than Characteristics. The
-# Characteristics keywords are derived from the meta-schema below.
+# Keywords contributed by extension add-ins other than this one. The semantic
+# annotation keywords are derived from the meta-schema below.
 OTHER_EXTENSION_KEYWORDS = {"altenums", "altnames", "descriptions", "unit", "symbol"}
 
 UNANNOTATED_SCHEMA = "https://json-structure.org/meta/extended/v0/#"
@@ -55,7 +55,7 @@ DERIVED_NOTE = (
 )
 
 
-def characteristics_keywords():
+def annotation_keywords():
     """Every keyword the add-ins listed under $offers contribute."""
     meta = json.loads(META.read_text(encoding="utf-8"))
     keywords = set()
@@ -147,7 +147,7 @@ def derive(document, keywords):
 
 def main(argv):
     check_only = "--check" in argv[1:]
-    keywords = characteristics_keywords() | OTHER_EXTENSION_KEYWORDS
+    keywords = annotation_keywords() | OTHER_EXTENSION_KEYWORDS
     stale = []
 
     for name in DIRECTORIES:

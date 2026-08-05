@@ -138,7 +138,7 @@ def build_arms(document, stripper) -> dict:
     them is whether the subject is also handed the specification, which is the
     difference between guessing what a keyword name means and reading it.
     """
-    keywords = stripper.characteristics_keywords() | stripper.OTHER_EXTENSION_KEYWORDS
+    keywords = stripper.annotation_keywords() | stripper.OTHER_EXTENSION_KEYWORDS
     annotated = json.loads(json.dumps(document))
     prose, _dropped = stripper.derive(json.loads(json.dumps(document)), keywords)
     bare = _strip_descriptions(json.loads(json.dumps(prose)))
@@ -473,7 +473,7 @@ def run_sample(sample: Sample, stripper, subject: models.Client,
 # been dropped in as `{sample}.supervisor.json`. The arms are labelled at emit
 # time so that no later step can influence the assignment.
 
-SPEC_SOURCE = HERE.parent / "draft-vasters-json-structure-characteristics.md"
+SPEC_SOURCE = HERE.parent / "draft-vasters-json-structure-semantic-annotations.md"
 SPEC_COPY = "specification.md"
 
 SPEC_NOTE = """
