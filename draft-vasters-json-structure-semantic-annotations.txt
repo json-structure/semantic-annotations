@@ -4,8 +4,8 @@
 
 Building Blocks for HTTP APIs                                 C. Vasters
 Internet-Draft                                     Microsoft Corporation
-Intended status: Experimental                               28 July 2026
-Expires: 29 January 2027
+Intended status: Standards Track                           5 August 2026
+Expires: 6 February 2027
 
 
        JSON Structure: Semantic and Reference-System Annotations
@@ -51,6 +51,7 @@ About This Document
    document may be found at https://datatracker.ietf.org/doc/draft-
    vasters-json-structure-semantic-annotations/.
 
+
    Source for this draft and an issue tracker can be found at
    https://github.com/json-structure/semantic-annotations.
 
@@ -69,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 January 2027.
+   This Internet-Draft will expire on 6 February 2027.
 
 Copyright Notice
 
