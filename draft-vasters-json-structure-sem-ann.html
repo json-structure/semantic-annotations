@@ -18,21 +18,12 @@ transformations between frames, and along linear elements; and annotations for
 color spaces, audio channel layouts, spectral bands, code lists, and
 measurement conditioning. 
        The annotations make an incompatibility between two data sets detectable by
-machine; they do not resolve one. This document defines no conversion, and a
-processor that cannot resolve a referenced definition reports the check as
-indeterminate rather than assuming agreement. Correctly declining to combine
-two values is the outcome these annotations enable; transforming them so that
-they can be combined remains the work of a tool that holds the authoritative
-definitions. 
-       The annotations provide progressively richer evidence. Their absence does not
-make a schema invalid, and the annotations do not define analytical procedures,
-expressions, causal inference, execution policy, or a lineage model. Several of
-them carry lineage facts; none of them chains one value to another, and a schema
-needing lineage in the modeled sense uses a provenance model beside them. 
+machine; they do not resolve one. They are optional, and their absence does not
+make a schema invalid. 
     " name="description">
 <meta content="xml2rfc 3.34.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
-<meta content="draft-vasters-json-structure-semantic-annotations-latest" name="ietf.draft">
+<meta content="draft-vasters-json-structure-sem-ann-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.34.0
     Python 3.14.5
@@ -48,7 +39,7 @@ needing lineage in the modeled sense uses a provenance model beside them.
     requests 2.33.1
     wcwidth 0.8.2
 -->
-<link href="draft-vasters-json-structure-semantic-annotations.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-vasters-json-structure-sem-ann.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1066,7 +1057,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Vasters</td>
-<td class="center">Expires 6 February 2027</td>
+<td class="center">Expires 7 February 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,17 +1065,17 @@ svg {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">Building Blocks for HTTP APIs</dd>
+<dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-vasters-json-structure-semantic-annotations-latest</dd>
+<dd class="internet-draft">draft-vasters-json-structure-sem-ann-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-08-05" class="published">5 August 2026</time>
+<time datetime="2026-08-06" class="published">6 August 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-02-06">6 February 2027</time></dd>
+<dd class="expires"><time datetime="2027-02-07">7 February 2027</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1108,17 +1099,8 @@ transformations between frames, and along linear elements; and annotations for
 color spaces, audio channel layouts, spectral bands, code lists, and
 measurement conditioning.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">The annotations make an incompatibility between two data sets detectable by
-machine; they do not resolve one. This document defines no conversion, and a
-processor that cannot resolve a referenced definition reports the check as
-indeterminate rather than assuming agreement. Correctly declining to combine
-two values is the outcome these annotations enable; transforming them so that
-they can be combined remains the work of a tool that holds the authoritative
-definitions.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
-<p id="section-abstract-3">The annotations provide progressively richer evidence. Their absence does not
-make a schema invalid, and the annotations do not define analytical procedures,
-expressions, causal inference, execution policy, or a lineage model. Several of
-them carry lineage facts; none of them chains one value to another, and a schema
-needing lineage in the modeled sense uses a provenance model beside them.<a href="#section-abstract-3" class="pilcrow">¶</a></p>
+machine; they do not resolve one. They are optional, and their absence does not
+make a schema invalid.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1126,11 +1108,10 @@ needing lineage in the modeled sense uses a provenance model beside them.<a href
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-semantic-annotations.html">https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-semantic-annotations.html</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-vasters-json-structure-semantic-annotations/">https://datatracker.ietf.org/doc/draft-vasters-json-structure-semantic-annotations/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
-<p id="section-note.1-3"></p>
-<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/json-structure/semantic-annotations">https://github.com/json-structure/semantic-annotations</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-sem-ann.html">https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-sem-ann.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-vasters-json-structure-sem-ann/">https://datatracker.ietf.org/doc/draft-vasters-json-structure-sem-ann/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/json-structure/semantic-annotations">https://github.com/json-structure/semantic-annotations</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1151,7 +1132,7 @@ needing lineage in the modeled sense uses a provenance model beside them.<a href
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 February 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 February 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1562,7 +1543,12 @@ needing lineage in the modeled sense uses a provenance model beside them.<a href
             <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-extension-meta-schema" class="internal xref">Extension Meta-Schema</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-security-and-privacy-consid" class="internal xref">Security and Privacy Considerations</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1">
+                <p id="section-toc.1-1.15.2.1.1"><a href="#section-15.1" class="auto internal xref">15.1</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#section-16" class="auto internal xref">16</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
@@ -1602,7 +1588,7 @@ needing lineage in the modeled sense uses a provenance model beside them.<a href
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
-            <p id="section-toc.1-1.19.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-changes-from-draft-vasters-" class="internal xref">Changes from draft-vasters-json-structure-semantic-annotations-00</a></p>
+            <p id="section-toc.1-1.19.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-change-log" class="internal xref">Change Log</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.20">
             <p id="section-toc.1-1.20.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
@@ -1673,14 +1659,16 @@ instantiate, no classes for procedures or features, and no relationships among
 observation entities, and it requires no record to be shaped like an observation.
 The roles describe what the members of a record already are, over a structure
 someone else fixed. A record does not become an observation by carrying them, a
-schema that carries none is not deficient for that reason, and a processor <span class="bcp14">MUST NOT</span> reconstruct an observation entity from the roles it finds.<a href="#section-1-6" class="pilcrow">¶</a></p>
+schema that carries none is not deficient for that reason, and a processor does
+not reconstruct an observation entity from the roles it finds
+(<a href="#processing-conformance" class="auto internal xref">Section 13.3</a>).<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">Nor does this document define analytical procedures. Several keywords name an
 operation, and naming one is not specifying it. A schema that declares a value
 an hourly mean records an operation that has already been performed; it does not
 state what a mean computes, how gaps in the set were treated, whether the window
 was inclusive of its bounds, or whether a consumer may recompute the value. The
-annotations describe what was done, and a processor <span class="bcp14">MUST NOT</span> read an instruction
-out of them.<a href="#section-1-7" class="pilcrow">¶</a></p>
+annotations describe what was done, and a processor does not read an instruction
+out of them (<a href="#processing-conformance" class="auto internal xref">Section 13.3</a>).<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">Nor does it define a lineage model, although several keywords carry lineage
 facts: <code>derivation</code> says how a value was produced, <code>observingProcedure</code>
 identifies what produced it, and <code>ingestionTime</code> says when a system received it.
@@ -1703,7 +1691,12 @@ than in the schema. Geometry, provenance, and unit algebra do not meet it,
 because each is a model in its own right that another specification defines;
 this document cites those rather than restating them.<a href="#section-1-9" class="pilcrow">¶</a></p>
 <p id="section-1-10">The annotations are optional and additive. A processor that does not implement
-them reads the schema exactly as JSON Structure Core defines it.<a href="#section-1-10" class="pilcrow">¶</a></p>
+them reads the schema exactly as JSON Structure Core defines it. This document
+defines no conversion, and a processor that cannot resolve a referenced
+definition reports the check as indeterminate rather than assuming agreement.
+Correctly declining to combine two values is the outcome these annotations
+enable; transforming them so that they can be combined remains the work of a
+tool that holds the authoritative definitions.<a href="#section-1-10" class="pilcrow">¶</a></p>
 <div id="semantic-binding">
 <section id="section-1.1">
         <h3 id="name-semantic-binding-and-extern">
@@ -1772,6 +1765,12 @@ optionally its qualifiers.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">Some examples in this document contain lines that exceed the maximum line
+length permitted in an RFC. Those examples use the single backslash line
+wrapping strategy of <span>[<a href="#RFC8792" class="cite xref">RFC8792</a>]</span> and carry the header that strategy defines.
+A line ending in a backslash is continued by the first non-space character of
+the following line; the backslash, the line break, and the leading whitespace
+are removed to recover the original text.<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="annotation-model">
@@ -2178,7 +2177,7 @@ descriptions, labels, or samples.<a href="#section-4.1.5-3" class="pilcrow">¶</
 {
   "name": "TideGaugeReading",
   "type": "object",
-  "description": "One water-level reading from a coastal tide gauge.",
+  "description": "One water-level reading from a tide gauge.",
   "concepts": [
     {
       "reference": "http://www.w3.org/ns/sosa/Observation",
@@ -2186,14 +2185,15 @@ descriptions, labels, or samples.<a href="#section-4.1.5-3" class="pilcrow">¶</
     }
   ],
   "observedProperty": {
-    "reference": "https://vocab.nerc.ac.uk/collection/P01/current/ASLVZZ01/",
+    "reference":
+      "https://vocab.nerc.ac.uk/collection/P01/current/ASLVZZ01/",
     "kind": "nerc-p01"
   },
   "properties": {
     "waterLevel": {
       "type": "double",
       "unit": "m",
-      "description": "Height of the water surface above chart datum.",
+      "description": "Height of the water surface above datum.",
       "examples": [2.41],
       "semanticRole": "observationValue",
       "concepts": [
@@ -2282,7 +2282,8 @@ in this document use <code>example-catalog</code> where the cited catalog is fic
 <pre>
 {
   "observedProperty": {
-    "reference": "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
+    "reference":
+      "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
     "kind": "nerc-p01"
   }
 }
@@ -2331,7 +2332,8 @@ modelling that result as a nested object.<a href="#section-5.1.3-4" class="pilcr
       "examples": [18.4],
       "semanticRole": "observationValue",
       "observedProperty": {
-        "reference": "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
+        "reference":
+        "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
         "kind": "nerc-p01"
       }
     },
@@ -2341,12 +2343,16 @@ modelling that result as a nested object.<a href="#section-5.1.3-4" class="pilcr
       "examples": [35.1],
       "semanticRole": "observationValue",
       "observedProperty": {
-        "reference": "https://vocab.nerc.ac.uk/collection/P01/current/PSLTZZ01/",
+        "reference":
+        "https://vocab.nerc.ac.uk/collection/P01/current/PSLTZZ01/",
         "kind": "nerc-p01"
       }
     }
   },
-  "required": ["buoy_id", "measured_at", "sea_surface_temperature", "practical_salinity"],
+  "required": [
+    "buoy_id", "measured_at", "sea_surface_temperature",
+    "practical_salinity"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.1.3-6" class="pilcrow">¶</a>
@@ -2413,7 +2419,7 @@ procedure roles defined below:<a href="#section-5.3.1-1" class="pilcrow">¶</a><
   "name": "WaterLevelObservation",
   "type": "object",
   "observedProperty": {
-    "reference": "https://catalog.example.org/observable-properties/water-level/v1",
+    "reference": "https://example.org/props/water-level/v1",
     "kind": "example-catalog"
   },
   "properties": {
@@ -2492,7 +2498,7 @@ metadata describes the measuring process in general and is distinct from
   "name": "RiverSampleObservation",
   "type": "object",
   "observedProperty": {
-    "reference": "https://catalog.example.org/observable-properties/dissolved-oxygen/v1",
+    "reference": "https://example.org/props/dissolved-oxygen/v1",
     "kind": "example-catalog"
   },
   "properties": {
@@ -2505,14 +2511,16 @@ metadata describes the measuring process in general and is distinct from
     },
     "sampleParcel": {
       "type": "string",
-      "description": "Sampled water parcel directly involved in observing",
+      "description": "Sampled water parcel directly observed",
       "examples": ["Surface sample at station 17"],
       "semanticRole": "proximateFeatureOfInterest"
     },
     "sampler": {
       "type": "uri",
       "description": "Instrument identifier from a device catalogue",
-      "examples": ["https://vocab.nerc.ac.uk/collection/L22/current/TOOL1248/"],
+      "examples": [
+        "https://vocab.nerc.ac.uk/collection/L22/current/TOOL1248/"
+      ],
       "semanticRole": "observingProcedure"
     },
     "dissolvedOxygen": {
@@ -2521,7 +2529,10 @@ metadata describes the measuring process in general and is distinct from
       "semanticRole": "observationValue"
     }
   },
-  "required": ["observationId", "waterBody", "sampleParcel", "sampler", "dissolvedOxygen"],
+  "required": [
+    "observationId", "waterBody", "sampleParcel", "sampler",
+    "dissolvedOxygen"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.3.2-2" class="pilcrow">¶</a>
@@ -2670,7 +2681,7 @@ effectively defined by the instrument or sampler used.<a href="#section-5.3.2.4-
     },
     "observed_at": {
       "type": "datetime",
-      "description": "Time when the water level applied at the station",
+      "description": "Time the water level applied at the station",
       "examples": ["2026-07-27T12:00:00Z"],
       "semanticRole": "phenomenonTime"
     },
@@ -2697,7 +2708,10 @@ effectively defined by the instrument or sampler used.<a href="#section-5.3.2.4-
       "semanticRole": "observationValue"
     }
   },
-  "required": ["station_id", "observed_at", "published_at", "in_force", "water_level"],
+  "required": [
+    "station_id", "observed_at", "published_at", "in_force",
+    "water_level"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.3.3-2" class="pilcrow">¶</a>
@@ -2742,7 +2756,7 @@ warning in force for twelve hours may concern a phenomenon lasting minutes.<a hr
 bitemporal valid time of ISO 19108 <span>[<a href="#ISO19108" class="cite xref">ISO19108</a>]</span>. <code>effectiveTime</code> is not that
 valid time, which pairs the period a fact is held true of the world with the
 period a system recorded it, and a processor <span class="bcp14">MUST NOT</span> read it as one.<a href="#section-5.3.3.3-4" class="pilcrow">¶</a></p>
-<p id="section-5.3.3.3-5">“Time” or “Duration” in any ISO, boundary, or operational role name defined by
+<p id="section-5.3.3.3-5">"Time" or "Duration" in any ISO, boundary, or operational role name defined by
 this document does not require a Gregorian, ISO 8601, or RFC 3339 encoding. The
 <code>semanticRole</code> states semantics; the Core type and any
 <code>temporalReferenceSystem</code> state representation and reference semantics.<a href="#section-5.3.3.3-5" class="pilcrow">¶</a></p>
@@ -2879,7 +2893,7 @@ separate representation or profile.<a href="#section-5.3.4.4-3" class="pilcrow">
     },
     "ingested_at": {
       "type": "datetime",
-      "description": "Time when the receiving system accepted the record",
+      "description": "Time the receiving system accepted the record",
       "examples": ["2026-07-27T14:09:30Z"],
       "semanticRole": "ingestionTime"
     },
@@ -2984,7 +2998,7 @@ temporal unit <span>[<a href="#JSTRUCT-UNITS" class="cite xref">JSTRUCT-UNITS</a
     },
     "lead_time": {
       "type": "duration",
-      "description": "Duration from forecast issue to the phenomenon time described",
+      "description": "Duration from issue to the phenomenon time",
       "examples": ["PT6H"],
       "semanticRole": "forecastLeadDuration"
     },
@@ -2994,7 +3008,10 @@ temporal unit <span>[<a href="#JSTRUCT-UNITS" class="cite xref">JSTRUCT-UNITS</a
       "semanticRole": "observationValue"
     }
   },
-  "required": ["station_id", "issued_at", "forecast_window", "predicted_water_level"],
+  "required": [
+    "station_id", "issued_at", "forecast_window",
+    "predicted_water_level"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.3.5.5-4" class="pilcrow">¶</a>
@@ -3044,7 +3061,7 @@ annotation as the other.<a href="#section-5.3.6.1-4" class="pilcrow">¶</a></p>
     },
     "record_status": {
       "type": "string",
-      "description": "Standing of this record in the publication lifecycle",
+      "description": "Standing of this record in the lifecycle",
       "enum": ["provisional", "verified", "superseded", "withdrawn"],
       "examples": ["provisional"],
       "semanticRole": "status"
@@ -3159,7 +3176,7 @@ formula, a model, an uncertainty, or a procedure from any of these values.<a hre
   "properties": {
     "sea_state_index": {
       "type": "double",
-      "description": "Composite sea-state index derived from significant wave height, peak period, and wind speed by the regional forecast model",
+      "description": "Composite sea-state index",
       "semanticRole": "observationValue",
       "derivation": "modeled"
     }
@@ -3342,13 +3359,14 @@ of missing values, an interpolation method by which a percentile is obtained
 from a finite set, or a computation, and a processor <span class="bcp14">MUST NOT</span> recompute a
 result from it.<a href="#section-5.5-14" class="pilcrow">¶</a></p>
 <p id="section-5.5-15">Example:<a href="#section-5.5-15" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-5.5-16">
+<div class="breakable lang-json sourcecode" id="section-5.5-16">
 <pre>
 {
   "name": "HourlyAirTemperatureSummary",
   "type": "object",
   "observedProperty": {
-    "reference": "https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html#air_temperature",
+    "reference":
+    "http://vocab.nerc.ac.uk/standard_name/air_temperature/",
     "kind": "cf-standard-name"
   },
   "properties": {
@@ -3386,7 +3404,10 @@ result from it.<a href="#section-5.5-14" class="pilcrow">¶</a></p>
       "statistic": "maximum"
     }
   },
-  "required": ["station", "hour_start", "hour_end", "temperature_mean", "temperature_max"],
+  "required": [
+    "station", "hour_start", "hour_end", "temperature_mean",
+    "temperature_max"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.5-16" class="pilcrow">¶</a>
@@ -3413,7 +3434,7 @@ parameter distinguishes them.<a href="#section-5.5-17" class="pilcrow">¶</a></p
     "latency_p95": {
       "type": "double",
       "unit": "ms",
-      "description": "Request latency below which 95 percent of requests in the window completed",
+      "description": "Latency below which 95 percent completed",
       "examples": [128.4],
       "semanticRole": "observationValue",
       "derivation": "statistic",
@@ -3422,14 +3443,16 @@ parameter distinguishes them.<a href="#section-5.5-17" class="pilcrow">¶</a></p
     "latency_p99": {
       "type": "double",
       "unit": "ms",
-      "description": "Request latency below which 99 percent of requests in the window completed",
+      "description": "Latency below which 99 percent completed",
       "examples": [512.7],
       "semanticRole": "observationValue",
       "derivation": "statistic",
       "statistic": { "function": "percentile", "percentile": 99 }
     }
   },
-  "required": ["window_start", "window_end", "latency_p95", "latency_p99"],
+  "required": [
+    "window_start", "window_end", "latency_p95", "latency_p99"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.5-18" class="pilcrow">¶</a>
@@ -3439,11 +3462,14 @@ in which an ozone air quality standard is stated, and it is not the same
 statistic as any percentile unless the number of days in the year is known.<a href="#section-5.5-19" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-5.5-20">
 <pre>
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "AnnualOzoneSummary",
   "type": "object",
   "observedProperty": {
-    "reference": "https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html#mole_fraction_of_ozone_in_air",
+    "reference": "http://vocab.nerc.ac.uk/standard_name/\
+        mole_fraction_of_ozone_in_air/",
     "kind": "cf-standard-name"
   },
   "properties": {
@@ -3465,7 +3491,7 @@ statistic as any percentile unless the number of days in the year is known.<a hr
     "fourth_highest_daily_max_8h": {
       "type": "double",
       "unit": "[ppb]",
-      "description": "Fourth-highest daily maximum eight-hour mean ozone mole fraction of the calendar year",
+      "description": "Fourth-highest daily maximum 8-hour mean",
       "examples": [68.0],
       "semanticRole": "observationValue",
       "derivation": "statistic",
@@ -3473,7 +3499,9 @@ statistic as any percentile unless the number of days in the year is known.<a hr
       "phenomenonTimeRelation": "interval"
     }
   },
-  "required": ["site", "year_start", "year_end", "fourth_highest_daily_max_8h"],
+  "required": [
+    "site", "year_start", "year_end", "fourth_highest_daily_max_8h"
+  ],
   "additionalProperties": false
 }
 </pre><a href="#section-5.5-20" class="pilcrow">¶</a>
@@ -4371,13 +4399,14 @@ processor can order two positions without implementing the definition.<a href="#
 <div class="breakable lang-json sourcecode" id="section-9.3.5-7">
 <pre>
 {
-  "$schema": "https://json-structure.org/meta/semantic-annotations/v0/#",
+  "$schema":
+  "https://json-structure.org/meta/semantic-annotations/v0/#",
   "$id": "https://schemas.example.org/racing-speed-observation",
   "name": "RacingSpeedObservation",
   "type": "object",
   "identity": ["observation_id"],
   "observedProperty": {
-    "reference": "https://catalog.example.org/observable-properties/vehicle-speed/v1",
+    "reference": "https://example.org/props/vehicle-speed/v1",
     "kind": "example-catalog"
   },
   "properties": {
@@ -4397,7 +4426,7 @@ processor can order two positions without implementing the definition.<a href="#
       "properties": {
         "ordinal": {
           "type": "string",
-          "description": "Clock position rendered at fixed width and ordered lexically",
+          "description": "Fixed-width position, ordered lexically",
           "examples": ["2026-07-26/R/S03/L014/01250.5"]
         },
         "session": { "type": "string" },
@@ -4405,7 +4434,9 @@ processor can order two positions without implementing the definition.<a href="#
         "lap": { "type": "uint32" },
         "distance_driven": { "type": "double", "unit": "m" }
       },
-      "required": ["ordinal", "session", "stint", "lap", "distance_driven"],
+      "required": [
+        "ordinal", "session", "stint", "lap", "distance_driven"
+      ],
       "additionalProperties": false
     },
     "speed": {
@@ -4422,11 +4453,11 @@ processor can order two positions without implementing the definition.<a href="#
     "RaceClockPosition": {
       "name": "RaceClockPosition",
       "type": "object",
-      "description": "Motor-racing clock. A position is located by session, stint, lap, and distance driven within the lap. Stint numbering is entry-specific, and positions from different entries are comparable only within one session.",
+      "description": "Motor-racing clock.",
       "properties": {
         "clockPosition": {
           "type": "string",
-          "description": "Components rendered at fixed width, most significant first, so that positions sort lexically",
+          "description": "Fixed-width components, sorting lexically",
           "referenceRole": "position"
         },
         "session": { "type": "string" },
@@ -4440,10 +4471,13 @@ processor can order two positions without implementing the definition.<a href="#
 }
 </pre><a href="#section-9.3.5-7" class="pilcrow">¶</a>
 </div>
-<p id="section-9.3.5-8">The compound position is comparable only under the rules of the identified
+<p id="section-9.3.5-8">The clock locates a position by session, stint, lap, and distance driven within
+the lap, with the components rendered most significant first in
+<code>clockPosition</code>. Stint numbering is entry-specific.<a href="#section-9.3.5-8" class="pilcrow">¶</a></p>
+<p id="section-9.3.5-9">The compound position is comparable only under the rules of the identified
 regime: equal stint, lap, and distance values do not imply equal positions
 across sessions or entries. Mapping this clock to UTC or elapsed session time
-requires an authoritative synchronization relation or transformation.<a href="#section-9.3.5-8" class="pilcrow">¶</a></p>
+requires an authoritative synchronization relation or transformation.<a href="#section-9.3.5-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -4586,7 +4620,7 @@ a value, and none licenses a value to be supplied where none was recorded
   "properties": {
     "frame_index": {
       "type": "int64",
-      "description": "Position of this frame, counted in samples from the start of the delivery",
+      "description": "Sample count from the start of delivery",
       "semanticRole": "phenomenonTime",
       "temporalReferenceSystem": {
         "reference": { "$ref": "#/definitions/AudioSampleClock" },
@@ -4614,11 +4648,11 @@ a value, and none licenses a value to be supplied where none was recorded
     "AudioSampleClock": {
       "name": "AudioSampleClock",
       "type": "object",
-      "description": "A position is a count of sample frames from the start of the delivery. The clock advances one unit per frame and does not reset within a delivery, so positions sort numerically and are comparable within one delivery and not across deliveries. Elapsed seconds are the count divided by the frame rate of the delivery; this meta-type does not supply that rate.",
+      "description": "Sample-frame count clock for one delivery.",
       "properties": {
         "frame_count": {
           "type": "int64",
-          "description": "Count of sample frames from the start of the delivery.",
+          "description": "Sample count from the start of delivery.",
           "referenceRole": "position"
         }
       },
@@ -4629,11 +4663,15 @@ a value, and none licenses a value to be supplied where none was recorded
 }
 </pre><a href="#section-9.4.2-12" class="pilcrow">¶</a>
 </div>
-<p id="section-9.4.2-13">The cadence here is one sample-clock unit and is exact. Written as a duration it
+<p id="section-9.4.2-13">The clock advances one unit per frame and does not reset within a delivery, so
+positions sort numerically and are comparable within one delivery and not
+across deliveries. Elapsed seconds are the count divided by the frame rate of
+the delivery, which the meta-type does not supply.<a href="#section-9.4.2-13" class="pilcrow">¶</a></p>
+<p id="section-9.4.2-14">The cadence here is one sample-clock unit and is exact. Written as a duration it
 could only have been approximated: <code>PT0.0000208333S</code> is short of a
 forty-eight-kilohertz frame by about thirty-three picoseconds, which is nothing
 in one frame and a full sample every thirteen seconds of programme, growing
-without bound for as long as the recording runs.<a href="#section-9.4.2-13" class="pilcrow">¶</a></p>
+without bound for as long as the recording runs.<a href="#section-9.4.2-14" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -5140,9 +5178,20 @@ and are carried separately.<a href="#section-10.2.4-8" class="pilcrow">¶</a></p
       "type": "tuple",
       "description": "Geocentric Solar Ecliptic frame.",
       "properties": {
-        "x": { "type": "double", "description": "Earth towards the Sun." },
-        "y": { "type": "double", "description": "In the ecliptic plane, towards dusk, completing a right-handed set." },
-        "z": { "type": "double", "description": "Parallel to the ecliptic pole, positive north." }
+        "x": {
+          "type": "double",
+          "description": "Earth towards the Sun."
+        },
+        "y": {
+          "type": "double",
+          "description":
+          "In the ecliptic plane, towards dusk, right-handed."
+        },
+        "z": {
+          "type": "double",
+          "description":
+          "Parallel to the ecliptic pole, positive north."
+        }
       },
       "tuple": ["x", "y", "z"]
     },
@@ -5151,9 +5200,20 @@ and are carried separately.<a href="#section-10.2.4-8" class="pilcrow">¶</a></p
       "type": "tuple",
       "description": "Geocentric Solar Magnetospheric frame.",
       "properties": {
-        "x": { "type": "double", "description": "Earth towards the Sun." },
-        "y": { "type": "double", "description": "Perpendicular to the geomagnetic dipole axis, completing a right-handed set." },
-        "z": { "type": "double", "description": "In the plane of x and the geomagnetic dipole axis, positive towards the northern magnetic pole." }
+        "x": {
+          "type": "double",
+          "description": "Earth towards the Sun."
+        },
+        "y": {
+          "type": "double",
+          "description":
+          "Perpendicular to the dipole axis, right-handed."
+        },
+        "z": {
+          "type": "double",
+          "description":
+          "In the plane of x and the dipole axis, positive north."
+        }
       },
       "tuple": ["x", "y", "z"]
     }
@@ -5219,7 +5279,7 @@ one.<a href="#section-10.3.1-3" class="pilcrow">¶</a></p>
 piezoelectric strain coefficients of a crystal are one such tensor: an electric
 field applied along one axis strains the crystal across every pair of axes, so
 each coefficient is picked out by three axes of the same crystal frame.<a href="#section-10.3.1-4" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-10.3.1-5">
+<div class="breakable lang-json sourcecode" id="section-10.3.1-5">
 <pre>
 {
   "name": "PiezoelectricCoefficients",
@@ -5227,9 +5287,18 @@ each coefficient is picked out by three axes of the same crystal frame.<a href="
   "tensorReferenceFrames": [
     {
       "frames": [
-        { "reference": { "$ref": "#/definitions/CrystalAxes" }, "kind": "type" },
-        { "reference": { "$ref": "#/definitions/CrystalAxes" }, "kind": "type" },
-        { "reference": { "$ref": "#/definitions/CrystalAxes" }, "kind": "type" }
+        {
+          "reference": { "$ref": "#/definitions/CrystalAxes" },
+          "kind": "type"
+        },
+        {
+          "reference": { "$ref": "#/definitions/CrystalAxes" },
+          "kind": "type"
+        },
+        {
+          "reference": { "$ref": "#/definitions/CrystalAxes" },
+          "kind": "type"
+        }
       ],
       "components": "d"
     }
@@ -5258,11 +5327,20 @@ each coefficient is picked out by three axes of the same crystal frame.<a href="
     "CrystalAxes": {
       "name": "CrystalAxes",
       "type": "tuple",
-      "description": "Orthogonal frame the coefficients of this material are published against, fixed by the symmetry of the crystal.",
+      "description": "Orthogonal frame fixed by crystal symmetry.",
       "properties": {
-        "x1": { "type": "double", "description": "First axis of that frame." },
-        "x2": { "type": "double", "description": "Second axis, at a right angle to x1." },
-        "x3": { "type": "double", "description": "Third axis, completing a right-handed set." }
+        "x1": {
+          "type": "double",
+          "description": "First axis of that frame."
+        },
+        "x2": {
+          "type": "double",
+          "description": "Second axis, at a right angle to x1."
+        },
+        "x3": {
+          "type": "double",
+          "description": "Third axis, right-handed."
+        }
       },
       "tuple": ["x1", "x2", "x3"]
     }
@@ -5342,8 +5420,14 @@ order. What a reader of the text file must look up, the schema carries.<a href="
   "tensorReferenceFrames": [
     {
       "frames": [
-        { "reference": { "$ref": "#/definitions/UseFrame" }, "kind": "type" },
-        { "reference": { "$ref": "#/definitions/UseFrame" }, "kind": "type" }
+        {
+          "reference": { "$ref": "#/definitions/UseFrame" },
+          "kind": "type"
+        },
+        {
+          "reference": { "$ref": "#/definitions/UseFrame" },
+          "kind": "type"
+        }
       ],
       "symmetry": "symmetric",
       "components": [
@@ -5383,7 +5467,8 @@ order. What a reader of the text file must look up, the schema carries.<a href="
     "UseFrame": {
       "name": "UseFrame",
       "type": "tuple",
-      "description": "Spherical frame of the Global CMT catalogue, oriented at the centroid position this record carries under lat and lon.",
+      "description":
+      "Spherical frame of the Global CMT catalogue, at lat/lon.",
       "properties": {
         "r": { "type": "double", "description": "Up." },
         "t": { "type": "double", "description": "South." },
@@ -5669,14 +5754,17 @@ which was meant. That is the ambiguity this keyword removes.<a href="#section-10
 record stores the scalar last, as the current attitude message standard requires
 of its own records, and <code>components</code> names it first, as this document requires
 of the annotation.<a href="#section-10.4.4.1-5" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-10.4.4.1-6">
+<div class="breakable lang-json sourcecode" id="section-10.4.4.1-6">
 <pre>
 {
   "name": "SpacecraftAttitude",
   "type": "object",
   "frameTransforms": [
     {
-      "from": { "reference": { "$ref": "#/definitions/BodyFrame" }, "kind": "type" },
+      "from": {
+        "reference": { "$ref": "#/definitions/BodyFrame" },
+        "kind": "type"
+      },
       "to": {
         "reference": "http://www.opengis.net/def/crs/EPSG/0/4978",
         "kind": "ogc-crs"
@@ -5700,9 +5788,18 @@ of the annotation.<a href="#section-10.4.4.1-5" class="pilcrow">¶</a></p>
       "type": "tuple",
       "description": "Spacecraft body frame.",
       "properties": {
-        "x": { "type": "double", "description": "Along the instrument boresight." },
-        "y": { "type": "double", "description": "Completes a right-handed set." },
-        "z": { "type": "double", "description": "Towards the solar array hinge." }
+        "x": {
+          "type": "double",
+          "description": "Along the instrument boresight."
+        },
+        "y": {
+          "type": "double",
+          "description": "Completes a right-handed set."
+        },
+        "z": {
+          "type": "double",
+          "description": "Towards the solar array hinge."
+        }
       },
       "tuple": ["x", "y", "z"]
     }
@@ -5970,8 +6067,14 @@ the reader, as declarations.<a href="#section-10.4.6-3" class="pilcrow">¶</a></
   "type": "object",
   "frameTransforms": [
     {
-      "from": { "reference": { "$ref": "#/definitions/LaserFrame" }, "kind": "type" },
-      "to": { "reference": { "$ref": "#/definitions/CameraFrame" }, "kind": "type" },
+      "from": {
+        "reference": { "$ref": "#/definitions/LaserFrame" },
+        "kind": "type"
+      },
+      "to": {
+        "reference": { "$ref": "#/definitions/CameraFrame" },
+        "kind": "type"
+      },
       "encoding": "rotationMatrix",
       "components": "rotation",
       "translation": ["tx", "ty", "tz"]
@@ -6002,8 +6105,14 @@ the reader, as declarations.<a href="#section-10.4.6-3" class="pilcrow">¶</a></
       "type": "tuple",
       "description": "Frame of the rotating laser scanner.",
       "properties": {
-        "x": { "type": "double", "description": "Forward along the vehicle." },
-        "y": { "type": "double", "description": "To the left of the vehicle." },
+        "x": {
+          "type": "double",
+          "description": "Forward along the vehicle."
+        },
+        "y": {
+          "type": "double",
+          "description": "To the left of the vehicle."
+        },
         "z": { "type": "double", "description": "Up." }
       },
       "tuple": ["x", "y", "z"]
@@ -6013,9 +6122,18 @@ the reader, as declarations.<a href="#section-10.4.6-3" class="pilcrow">¶</a></
       "type": "tuple",
       "description": "Frame of the reference camera.",
       "properties": {
-        "x": { "type": "double", "description": "To the right in the image." },
-        "y": { "type": "double", "description": "Down in the image." },
-        "z": { "type": "double", "description": "Along the optical axis, away from the camera." }
+        "x": {
+          "type": "double",
+          "description": "To the right in the image."
+        },
+        "y": {
+          "type": "double",
+          "description": "Down in the image."
+        },
+        "z": {
+          "type": "double",
+          "description": "Along the optical axis, from the camera."
+        }
       },
       "tuple": ["x", "y", "z"]
     }
@@ -6202,11 +6320,14 @@ measure values, which is why the <code>measure</code> rule requires the annotate
 to carry one:<a href="#section-10.5.6-4" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-10.5.6-5">
 <pre>
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "WsdotStateRouteLocation",
   "type": "object",
   "linearReferenceSystem": {
-    "reference": "https://data.wsdot.wa.gov/arcgis/rest/services/Shared/LRSData/FeatureServer/9",
+    "reference": "https://data.wsdot.wa.gov/arcgis/rest/services/\
+        Shared/LRSData/FeatureServer/9",
     "kind": "lrs-network",
     "linearElement": "route_identifier",
     "measure": "arm",
@@ -6522,7 +6643,8 @@ stylesheet would write it.<a href="#section-11.1.4-9" class="pilcrow">¶</a></p>
   "type": "object",
   "colorSpaces": [
     {
-      "reference": "https://www.w3.org/TR/css-color-4/#predefined-sRGB",
+      "reference":
+      "https://www.w3.org/TR/css-color-4/#predefined-sRGB",
       "kind": "iec",
       "channels": ["value"],
       "packing": "hexRgba"
@@ -6689,17 +6811,21 @@ a color space in the colorimetric sense at all; the other is a set of device
 control values whose meaning is precisely the measurement it is paired with.<a href="#section-11.1.8-1" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-11.1.8-2">
 <pre>
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "CharacterizationPatch",
   "type": "object",
   "colorSpaces": [
     {
-      "reference": "https://registry.color.org/cmyk-registry/fogra51",
+      "reference":
+      "https://registry.color.org/cmyk-registry/fogra51",
       "kind": "icc-registry",
       "channels": ["c", "m", "y", "k"]
     },
     {
-      "reference": "https://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1",
+      "reference": "https://cie.co.at/publications/\
+          colorimetry-part-4-cie-1976-lab-colour-space-1",
       "kind": "cie",
       "channels": ["lStar", "aStar", "bStar"],
       "illuminant": "D50",
@@ -7107,12 +7233,15 @@ do not name, such as brightness temperature, is carried as an open value.<a href
 whose bands are those of <span>[<a href="#USGS-LANDSAT" class="cite xref">USGS-LANDSAT</a>]</span>, carried as reflectance.<a href="#section-12.2.4-1" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-12.2.4-2">
 <pre>
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "OliPixel",
   "type": "object",
   "spectralBands": [
     {
-      "reference": "https://www.usgs.gov/faqs/what-are-band-designations-landsat-satellites#landsat-8-9-oli",
+      "reference": "https://www.usgs.gov/faqs/\
+          what-are-band-designations-landsat-satellites",
       "kind": "sensor",
       "bands": [
         "coastalAerosol", "blue", "green", "red",
@@ -7281,11 +7410,19 @@ present;<a href="#section-13.3-3.13.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-13.3-3.14">
             <p id="section-13.3-3.14.1">that members sharing a name prefix, a unit, or an observed property are the
-components of one vector quantity; or<a href="#section-13.3-3.14.1" class="pilcrow">¶</a></p>
+components of one vector quantity;<a href="#section-13.3-3.14.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-13.3-3.15">
-            <p id="section-13.3-3.15.1">permission to aggregate, convert, transform, reject outliers, or infer
-causality.<a href="#section-13.3-3.15.1" class="pilcrow">¶</a></p>
+            <p id="section-13.3-3.15.1">an observation entity, or any class, identity, or relationship of an
+observation model, from the roles a schema declares;<a href="#section-13.3-3.15.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-13.3-3.16">
+            <p id="section-13.3-3.16.1">an instruction to perform, repeat, or recompute an operation from a keyword
+that names one; or<a href="#section-13.3-3.16.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-13.3-3.17">
+            <p id="section-13.3-3.17.1">permission to aggregate, convert, transform, reject outliers, or infer
+causality.<a href="#section-13.3-3.17.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-13.3-4">A processor that selects one temporal position as the event-time axis of a
@@ -7343,7 +7480,7 @@ not conforming, and a processor <span class="bcp14">MUST NOT</span> select betwe
       <h2 id="name-extension-meta-schema">
 <a href="#section-14" class="section-number selfRef">14. </a><a href="#name-extension-meta-schema" class="section-name selfRef">Extension Meta-Schema</a>
       </h2>
-<p id="section-14-1">The extension meta-schema will be published at:<a href="#section-14-1" class="pilcrow">¶</a></p>
+<p id="section-14-1">The extension meta-schema is published at:<a href="#section-14-1" class="pilcrow">¶</a></p>
 <p id="section-14-2"><code>https://json-structure.org/meta/semantic-annotations/v0/#</code><a href="#section-14-2" class="pilcrow">¶</a></p>
 <p id="section-14-3">It offers one feature, <code>JSONStructureSemanticAnnotations</code>, whose add-ins contribute
 the keywords defined here to the Core property, object, tuple, array, set, map,
@@ -7364,8 +7501,8 @@ the meta-schema alone. No companion reference type or import is required.<a href
 </div>
 <div id="security-considerations">
 <section id="section-15">
-      <h2 id="name-security-and-privacy-consid">
-<a href="#section-15" class="section-number selfRef">15. </a><a href="#name-security-and-privacy-consid" class="section-name selfRef">Security and Privacy Considerations</a>
+      <h2 id="name-security-considerations">
+<a href="#section-15" class="section-number selfRef">15. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-15-1">Incorrect or malicious catalog entries, labels, mappings,
 feature identities, or procedure identities can cause results from different
@@ -7404,15 +7541,23 @@ domains of validity can reorder positions or create false coverage. Cadence <spa
 measure origin, unit, or direction can place a feature incorrectly. Processors
 <span class="bcp14">MUST NOT</span> perform temporal, coordinate, linear, or unit transformations without
 validating authoritative definitions.<a href="#section-15-5" class="pilcrow">¶</a></p>
-<p id="section-15-6">Catalog labels and mappings, procedure and feature identities, locations,
-times, statuses, and quality can reveal sensitive operations or subjects. Hidden
-labels are not an access-control mechanism. This specification grants no access and
-does not replace minimization, privacy review, retention, or export controls.<a href="#section-15-6" class="pilcrow">¶</a></p>
-<p id="section-15-7">Remote registries, schemas, vocabularies, procedures, mapping targets, and
+<p id="section-15-6">Remote registries, schemas, vocabularies, procedures, mapping targets, and
 reference systems are untrusted input. Implementations <span class="bcp14">SHOULD</span> use HTTPS where
 available, bounded retrieval, caching with version awareness, allow-lists where
-appropriate, cycle detection, and explicit trust decisions. Dereferencing can
-disclose processor interest.<a href="#section-15-7" class="pilcrow">¶</a></p>
+appropriate, cycle detection, and explicit trust decisions.<a href="#section-15-6" class="pilcrow">¶</a></p>
+<div id="privacy-considerations">
+<section id="section-15.1">
+        <h3 id="name-privacy-considerations">
+<a href="#section-15.1" class="section-number selfRef">15.1. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
+        </h3>
+<p id="section-15.1-1">Catalog labels and mappings, procedure and feature identities, locations,
+times, statuses, and quality can reveal sensitive operations or subjects. Hidden
+labels are not an access-control mechanism. This specification grants no access and
+does not replace minimization, privacy review, retention, or export controls.<a href="#section-15.1-1" class="pilcrow">¶</a></p>
+<p id="section-15.1-2">Dereferencing a <code>reference</code> can disclose processor interest to the party that
+serves the definition.<a href="#section-15.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="iana-considerations">
@@ -7446,21 +7591,17 @@ disclose processor interest.<a href="#section-15-7" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">International Organization for Standardization</span>, <span class="refTitle">"ISO 19148:2021 Geographic information - Linear referencing"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://www.iso.org/standard/75147.html">https://www.iso.org/standard/75147.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="ISO19156">[ISO19156]</dt>
-        <dd>
-<span class="refAuthor">International Organization for Standardization</span>, <span class="refTitle">"ISO 19156:2023 Geographic information - Observations, measurements and samples"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://www.iso.org/standard/82463.html">https://www.iso.org/standard/82463.html</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="JSTRUCT-CORE">[JSTRUCT-CORE]</dt>
         <dd>
-<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure Core"</span>, <span>n.d.</span>, <span>&lt;<a href="https://json-structure.github.io/core/draft-vasters-json-structure-core.html">https://json-structure.github.io/core/draft-vasters-json-structure-core.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Core"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-vasters-json-structure-core-04</span>, <time datetime="2026-06-08" class="refDate">8 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-core-04">https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-core-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JSTRUCT-UNITS">[JSTRUCT-UNITS]</dt>
         <dd>
-<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Symbols, Scientific Units, and Currencies"</span>, <span>n.d.</span>, <span>&lt;<a href="https://json-structure.github.io/units/draft-vasters-json-structure-units.html">https://json-structure.github.io/units/draft-vasters-json-structure-units.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Symbols, Scientific Units, and Currencies"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-vasters-json-structure-units-03</span>, <time datetime="2026-06-08" class="refDate">8 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-units-03">https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-units-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JSTRUCT-VALIDATION">[JSTRUCT-VALIDATION]</dt>
         <dd>
-<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Validation"</span>, <span>n.d.</span>, <span>&lt;<a href="https://json-structure.github.io/validation/draft-vasters-json-structure-validation.html">https://json-structure.github.io/validation/draft-vasters-json-structure-validation.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Validation Extensions"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-vasters-json-structure-validation-03</span>, <time datetime="2026-06-08" class="refDate">8 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-validation-03">https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-validation-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="OGC-NAMES">[OGC-NAMES]</dt>
         <dd>
@@ -7587,6 +7728,10 @@ disclose processor interest.<a href="#section-15-7" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">International Commission on Illumination</span>, <span class="refTitle">"Colorimetry - Part 4: CIE 1976 L*a*b* colour space (ISO/CIE 11664-4:2019)"</span>, <time datetime="2019" class="refDate">2019</time>, <span>&lt;<a href="https://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1">https://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="ISO19156">[ISO19156]</dt>
+        <dd>
+<span class="refAuthor">International Organization for Standardization</span>, <span class="refTitle">"ISO 19156:2023 Geographic information - Observations, measurements and samples"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://www.iso.org/standard/82463.html">https://www.iso.org/standard/82463.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="ITU-BS1770">[ITU-BS1770]</dt>
         <dd>
 <span class="refAuthor">International Telecommunication Union</span>, <span class="refTitle">"Recommendation ITU-R BS.1770-5: Algorithms to measure audio programme loudness and true-peak audio level"</span>, <time datetime="2023-11" class="refDate">November 2023</time>, <span>&lt;<a href="https://www.itu.int/rec/R-REC-BS.1770/en">https://www.itu.int/rec/R-REC-BS.1770/en</a>&gt;</span>. </dd>
@@ -7609,15 +7754,15 @@ disclose processor interest.<a href="#section-15-7" class="pilcrow">¶</a></p>
 <dd class="break"></dd>
 <dt id="JSTRUCT-ALTNAMES">[JSTRUCT-ALTNAMES]</dt>
         <dd>
-<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Alternate Names and Descriptions"</span>, <span>n.d.</span>, <span>&lt;<a href="https://json-structure.github.io/alternate-names/draft-vasters-json-structure-alternate-names.html">https://json-structure.github.io/alternate-names/draft-vasters-json-structure-alternate-names.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Alternate Names and Descriptions"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-vasters-json-structure-alternate-names-03</span>, <time datetime="2026-06-08" class="refDate">8 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-alternate-names-03">https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-alternate-names-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JSTRUCT-IMPORT">[JSTRUCT-IMPORT]</dt>
         <dd>
-<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Import"</span>, <span>n.d.</span>, <span>&lt;<a href="https://json-structure.github.io/import/draft-vasters-json-structure-import.html">https://json-structure.github.io/import/draft-vasters-json-structure-import.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Import"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-vasters-json-structure-import-03</span>, <time datetime="2026-06-08" class="refDate">8 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-import-03">https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-import-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JSTRUCT-RELATIONS">[JSTRUCT-RELATIONS]</dt>
         <dd>
-<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Relations"</span>, <span>n.d.</span>, <span>&lt;<a href="https://json-structure.github.io/relations/draft-vasters-json-structure-relations.html">https://json-structure.github.io/relations/draft-vasters-json-structure-relations.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Vasters, C.</span>, <span class="refTitle">"JSON Structure: Relations"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-vasters-json-structure-relations-00</span>, <time datetime="2026-06-08" class="refDate">8 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-relations-00">https://datatracker.ietf.org/doc/html/draft-vasters-json-structure-relations-00</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="KITTI">[KITTI]</dt>
         <dd>
@@ -7666,6 +7811,10 @@ disclose processor interest.<a href="#section-15-7" class="pilcrow">¶</a></p>
 <dt id="REP-103">[REP-103]</dt>
         <dd>
 <span class="refAuthor">Foote, T.</span> and <span class="refAuthor">M. Purvis</span>, <span class="refTitle">"REP 103: Standard Units of Measure and Coordinate Conventions"</span>, <time datetime="2010-10-07" class="refDate">7 October 2010</time>, <span>&lt;<a href="https://www.ros.org/reps/rep-0103.html">https://www.ros.org/reps/rep-0103.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8792">[RFC8792]</dt>
+        <dd>
+<span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Auerswald, E.</span>, <span class="refAuthor">Farrel, A.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Handling Long Lines in Content of Internet-Drafts and RFCs"</span>, <span class="seriesInfo">RFC 8792</span>, <span class="seriesInfo">DOI 10.17487/RFC8792</span>, <time datetime="2020-06" class="refDate">June 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8792">https://www.rfc-editor.org/rfc/rfc8792</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SKOS">[SKOS]</dt>
         <dd>
@@ -7977,10 +8126,10 @@ reference <code>{ "$ref": &lt;JSON Pointer&gt; }</code>, not a URI.<a href="#app
 </div>
 </section>
 </div>
-<div id="changes-from-draft-vasters-json-structure-semantic-annotations-00">
+<div id="change-log">
 <section id="appendix-B">
-      <h2 id="name-changes-from-draft-vasters-">
-<a href="#name-changes-from-draft-vasters-" class="section-name selfRef">Changes from draft-vasters-json-structure-semantic-annotations-00</a>
+      <h2 id="name-change-log">
+<a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
 <ul class="normal">
 <li class="normal" id="appendix-B-1.1">
