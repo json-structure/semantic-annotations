@@ -3,22 +3,17 @@ title: "JSON Structure: Semantic and Reference-System Annotations"
 abbrev: "JSON Structure Semantic Annotations"
 category: std
 
-docname: draft-vasters-json-structure-semantic-annotations-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+docname: draft-vasters-json-structure-sem-ann-latest
+submissiontype: IETF
 number:
-date: 2026-08-05
+date:
 consensus: true
 v: 3
 area: Web and Internet Transport
-workgroup: Building Blocks for HTTP APIs
 keyword: Internet-Draft
 venue:
-  group: TBD
-  type: Working Group
-  mail: TBD
-  arch: TBD
   github: "json-structure/semantic-annotations"
-  latest: "https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-semantic-annotations.html"
+  latest: "https://json-structure.github.io/semantic-annotations/draft-vasters-json-structure-sem-ann.html"
 
 author:
   - fullname: Clemens Vasters
@@ -28,21 +23,9 @@ author:
 normative:
   RFC3339:
   RFC3986:
-  JSTRUCT-CORE:
-    title: "JSON Structure Core"
-    author:
-      - fullname: Clemens Vasters
-    target: https://json-structure.github.io/core/draft-vasters-json-structure-core.html
-  JSTRUCT-UNITS:
-    title: "JSON Structure: Symbols, Scientific Units, and Currencies"
-    author:
-      - fullname: Clemens Vasters
-    target: https://json-structure.github.io/units/draft-vasters-json-structure-units.html
-  JSTRUCT-VALIDATION:
-    title: "JSON Structure: Validation"
-    author:
-      - fullname: Clemens Vasters
-    target: https://json-structure.github.io/validation/draft-vasters-json-structure-validation.html
+  JSTRUCT-CORE: I-D.vasters-json-structure-core
+  JSTRUCT-UNITS: I-D.vasters-json-structure-units
+  JSTRUCT-VALIDATION: I-D.vasters-json-structure-validation
   ISO19108:
     title: "ISO 19108:2002 Geographic information - Temporal schema"
     author:
@@ -61,12 +44,6 @@ normative:
       - org: International Organization for Standardization
     date: 2021
     target: https://www.iso.org/standard/75147.html
-  ISO19156:
-    title: "ISO 19156:2023 Geographic information - Observations, measurements and samples"
-    author:
-      - org: International Organization for Standardization
-    date: 2023
-    target: https://www.iso.org/standard/82463.html
   OGC-NAMES:
     title: "OGC Name Type Specification - definitions - part 1 - basic name"
     author:
@@ -74,21 +51,16 @@ normative:
     target: https://docs.ogc.org/pol/09-048r6.html
 
 informative:
-  JSTRUCT-RELATIONS:
-    title: "JSON Structure: Relations"
+  RFC8792:
+  ISO19156:
+    title: "ISO 19156:2023 Geographic information - Observations, measurements and samples"
     author:
-      - fullname: Clemens Vasters
-    target: https://json-structure.github.io/relations/draft-vasters-json-structure-relations.html
-  JSTRUCT-IMPORT:
-    title: "JSON Structure: Import"
-    author:
-      - fullname: Clemens Vasters
-    target: https://json-structure.github.io/import/draft-vasters-json-structure-import.html
-  JSTRUCT-ALTNAMES:
-    title: "JSON Structure: Alternate Names and Descriptions"
-    author:
-      - fullname: Clemens Vasters
-    target: https://json-structure.github.io/alternate-names/draft-vasters-json-structure-alternate-names.html
+      - org: International Organization for Standardization
+    date: 2023
+    target: https://www.iso.org/standard/82463.html
+  JSTRUCT-RELATIONS: I-D.vasters-json-structure-relations
+  JSTRUCT-IMPORT: I-D.vasters-json-structure-import
+  JSTRUCT-ALTNAMES: I-D.vasters-json-structure-alternate-names
   OGC-TOPIC2:
     title: "OGC Abstract Specification Topic 2: Referencing by coordinates"
     author:
@@ -397,18 +369,8 @@ color spaces, audio channel layouts, spectral bands, code lists, and
 measurement conditioning.
 
 The annotations make an incompatibility between two data sets detectable by
-machine; they do not resolve one. This document defines no conversion, and a
-processor that cannot resolve a referenced definition reports the check as
-indeterminate rather than assuming agreement. Correctly declining to combine
-two values is the outcome these annotations enable; transforming them so that
-they can be combined remains the work of a tool that holds the authoritative
-definitions.
-
-The annotations provide progressively richer evidence. Their absence does not
-make a schema invalid, and the annotations do not define analytical procedures,
-expressions, causal inference, execution policy, or a lineage model. Several of
-them carry lineage facts; none of them chains one value to another, and a schema
-needing lineage in the modeled sense uses a provenance model beside them.
+machine; they do not resolve one. They are optional, and their absence does not
+make a schema invalid.
 
 --- middle
 
@@ -463,16 +425,17 @@ instantiate, no classes for procedures or features, and no relationships among
 observation entities, and it requires no record to be shaped like an observation.
 The roles describe what the members of a record already are, over a structure
 someone else fixed. A record does not become an observation by carrying them, a
-schema that carries none is not deficient for that reason, and a processor MUST
-NOT reconstruct an observation entity from the roles it finds.
+schema that carries none is not deficient for that reason, and a processor does
+not reconstruct an observation entity from the roles it finds
+({{processing-conformance}}).
 
 Nor does this document define analytical procedures. Several keywords name an
 operation, and naming one is not specifying it. A schema that declares a value
 an hourly mean records an operation that has already been performed; it does not
 state what a mean computes, how gaps in the set were treated, whether the window
 was inclusive of its bounds, or whether a consumer may recompute the value. The
-annotations describe what was done, and a processor MUST NOT read an instruction
-out of them.
+annotations describe what was done, and a processor does not read an instruction
+out of them ({{processing-conformance}}).
 
 Nor does it define a lineage model, although several keywords carry lineage
 facts: `derivation` says how a value was produced, `observingProcedure`
@@ -498,7 +461,12 @@ because each is a model in its own right that another specification defines;
 this document cites those rather than restating them.
 
 The annotations are optional and additive. A processor that does not implement
-them reads the schema exactly as JSON Structure Core defines it.
+them reads the schema exactly as JSON Structure Core defines it. This document
+defines no conversion, and a processor that cannot resolve a referenced
+definition reports the check as indeterminate rather than assuming agreement.
+Correctly declining to combine two values is the outcome these annotations
+enable; transforming them so that they can be combined remains the work of a
+tool that holds the authoritative definitions.
 
 ## Semantic Binding and External Definitions {#semantic-binding}
 
@@ -558,6 +526,13 @@ optionally its qualifiers.
 # Conventions {#conventions}
 
 {::boilerplate bcp14-tagged}
+
+Some examples in this document contain lines that exceed the maximum line
+length permitted in an RFC. Those examples use the single backslash line
+wrapping strategy of {{RFC8792}} and carry the header that strategy defines.
+A line ending in a backslash is continued by the first non-space character of
+the following line; the backslash, the line break, and the leading whitespace
+are removed to recover the original text.
 
 # Annotation Model {#annotation-model}
 
@@ -801,7 +776,7 @@ Example:
 {
   "name": "TideGaugeReading",
   "type": "object",
-  "description": "One water-level reading from a coastal tide gauge.",
+  "description": "One water-level reading from a tide gauge.",
   "concepts": [
     {
       "reference": "http://www.w3.org/ns/sosa/Observation",
@@ -809,14 +784,15 @@ Example:
     }
   ],
   "observedProperty": {
-    "reference": "https://vocab.nerc.ac.uk/collection/P01/current/ASLVZZ01/",
+    "reference":
+      "https://vocab.nerc.ac.uk/collection/P01/current/ASLVZZ01/",
     "kind": "nerc-p01"
   },
   "properties": {
     "waterLevel": {
       "type": "double",
       "unit": "m",
-      "description": "Height of the water surface above chart datum.",
+      "description": "Height of the water surface above datum.",
       "examples": [2.41],
       "semanticRole": "observationValue",
       "concepts": [
@@ -886,7 +862,8 @@ Example:
 ~~~ json
 {
   "observedProperty": {
-    "reference": "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
+    "reference":
+      "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
     "kind": "nerc-p01"
   }
 }
@@ -934,7 +911,8 @@ Example of a record with two results:
       "examples": [18.4],
       "semanticRole": "observationValue",
       "observedProperty": {
-        "reference": "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
+        "reference":
+        "https://vocab.nerc.ac.uk/collection/P01/current/CTMPZZ01/",
         "kind": "nerc-p01"
       }
     },
@@ -944,12 +922,16 @@ Example of a record with two results:
       "examples": [35.1],
       "semanticRole": "observationValue",
       "observedProperty": {
-        "reference": "https://vocab.nerc.ac.uk/collection/P01/current/PSLTZZ01/",
+        "reference":
+        "https://vocab.nerc.ac.uk/collection/P01/current/PSLTZZ01/",
         "kind": "nerc-p01"
       }
     }
   },
-  "required": ["buoy_id", "measured_at", "sea_surface_temperature", "practical_salinity"],
+  "required": [
+    "buoy_id", "measured_at", "sea_surface_temperature",
+    "practical_salinity"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -1011,7 +993,7 @@ procedure roles defined below:
   "name": "WaterLevelObservation",
   "type": "object",
   "observedProperty": {
-    "reference": "https://catalog.example.org/observable-properties/water-level/v1",
+    "reference": "https://example.org/props/water-level/v1",
     "kind": "example-catalog"
   },
   "properties": {
@@ -1081,7 +1063,7 @@ A record using the roles of this concern:
   "name": "RiverSampleObservation",
   "type": "object",
   "observedProperty": {
-    "reference": "https://catalog.example.org/observable-properties/dissolved-oxygen/v1",
+    "reference": "https://example.org/props/dissolved-oxygen/v1",
     "kind": "example-catalog"
   },
   "properties": {
@@ -1094,14 +1076,16 @@ A record using the roles of this concern:
     },
     "sampleParcel": {
       "type": "string",
-      "description": "Sampled water parcel directly involved in observing",
+      "description": "Sampled water parcel directly observed",
       "examples": ["Surface sample at station 17"],
       "semanticRole": "proximateFeatureOfInterest"
     },
     "sampler": {
       "type": "uri",
       "description": "Instrument identifier from a device catalogue",
-      "examples": ["https://vocab.nerc.ac.uk/collection/L22/current/TOOL1248/"],
+      "examples": [
+        "https://vocab.nerc.ac.uk/collection/L22/current/TOOL1248/"
+      ],
       "semanticRole": "observingProcedure"
     },
     "dissolvedOxygen": {
@@ -1110,7 +1094,10 @@ A record using the roles of this concern:
       "semanticRole": "observationValue"
     }
   },
-  "required": ["observationId", "waterBody", "sampleParcel", "sampler", "dissolvedOxygen"],
+  "required": [
+    "observationId", "waterBody", "sampleParcel", "sampler",
+    "dissolvedOxygen"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -1244,7 +1231,7 @@ A record using the roles of this concern:
     },
     "observed_at": {
       "type": "datetime",
-      "description": "Time when the water level applied at the station",
+      "description": "Time the water level applied at the station",
       "examples": ["2026-07-27T12:00:00Z"],
       "semanticRole": "phenomenonTime"
     },
@@ -1271,7 +1258,10 @@ A record using the roles of this concern:
       "semanticRole": "observationValue"
     }
   },
-  "required": ["station_id", "observed_at", "published_at", "in_force", "water_level"],
+  "required": [
+    "station_id", "observed_at", "published_at", "in_force",
+    "water_level"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -1311,7 +1301,7 @@ bitemporal valid time of ISO 19108 {{ISO19108}}. `effectiveTime` is not that
 valid time, which pairs the period a fact is held true of the world with the
 period a system recorded it, and a processor MUST NOT read it as one.
 
-“Time” or “Duration” in any ISO, boundary, or operational role name defined by
+"Time" or "Duration" in any ISO, boundary, or operational role name defined by
 this document does not require a Gregorian, ISO 8601, or RFC 3339 encoding. The
 `semanticRole` states semantics; the Core type and any
 `temporalReferenceSystem` state representation and reference semantics.
@@ -1426,7 +1416,7 @@ A planned activity, its execution, and its acceptance by a receiving system:
     },
     "ingested_at": {
       "type": "datetime",
-      "description": "Time when the receiving system accepted the record",
+      "description": "Time the receiving system accepted the record",
       "examples": ["2026-07-27T14:09:30Z"],
       "semanticRole": "ingestionTime"
     },
@@ -1519,7 +1509,7 @@ Example:
     },
     "lead_time": {
       "type": "duration",
-      "description": "Duration from forecast issue to the phenomenon time described",
+      "description": "Duration from issue to the phenomenon time",
       "examples": ["PT6H"],
       "semanticRole": "forecastLeadDuration"
     },
@@ -1529,7 +1519,10 @@ Example:
       "semanticRole": "observationValue"
     }
   },
-  "required": ["station_id", "issued_at", "forecast_window", "predicted_water_level"],
+  "required": [
+    "station_id", "issued_at", "forecast_window",
+    "predicted_water_level"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -1575,7 +1568,7 @@ Example:
     },
     "record_status": {
       "type": "string",
-      "description": "Standing of this record in the publication lifecycle",
+      "description": "Standing of this record in the lifecycle",
       "enum": ["provisional", "verified", "superseded", "withdrawn"],
       "examples": ["provisional"],
       "semanticRole": "status"
@@ -1657,7 +1650,7 @@ Example:
   "properties": {
     "sea_state_index": {
       "type": "double",
-      "description": "Composite sea-state index derived from significant wave height, peak period, and wind speed by the regional forecast model",
+      "description": "Composite sea-state index",
       "semanticRole": "observationValue",
       "derivation": "modeled"
     }
@@ -1762,7 +1755,8 @@ Example:
   "name": "HourlyAirTemperatureSummary",
   "type": "object",
   "observedProperty": {
-    "reference": "https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html#air_temperature",
+    "reference":
+    "http://vocab.nerc.ac.uk/standard_name/air_temperature/",
     "kind": "cf-standard-name"
   },
   "properties": {
@@ -1800,7 +1794,10 @@ Example:
       "statistic": "maximum"
     }
   },
-  "required": ["station", "hour_start", "hour_end", "temperature_mean", "temperature_max"],
+  "required": [
+    "station", "hour_start", "hour_end", "temperature_mean",
+    "temperature_max"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -1827,7 +1824,7 @@ parameter distinguishes them.
     "latency_p95": {
       "type": "double",
       "unit": "ms",
-      "description": "Request latency below which 95 percent of requests in the window completed",
+      "description": "Latency below which 95 percent completed",
       "examples": [128.4],
       "semanticRole": "observationValue",
       "derivation": "statistic",
@@ -1836,14 +1833,16 @@ parameter distinguishes them.
     "latency_p99": {
       "type": "double",
       "unit": "ms",
-      "description": "Request latency below which 99 percent of requests in the window completed",
+      "description": "Latency below which 99 percent completed",
       "examples": [512.7],
       "semanticRole": "observationValue",
       "derivation": "statistic",
       "statistic": { "function": "percentile", "percentile": 99 }
     }
   },
-  "required": ["window_start", "window_end", "latency_p95", "latency_p99"],
+  "required": [
+    "window_start", "window_end", "latency_p95", "latency_p99"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -1853,11 +1852,14 @@ in which an ozone air quality standard is stated, and it is not the same
 statistic as any percentile unless the number of days in the year is known.
 
 ~~~ json
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "AnnualOzoneSummary",
   "type": "object",
   "observedProperty": {
-    "reference": "https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html#mole_fraction_of_ozone_in_air",
+    "reference": "http://vocab.nerc.ac.uk/standard_name/\
+        mole_fraction_of_ozone_in_air/",
     "kind": "cf-standard-name"
   },
   "properties": {
@@ -1879,7 +1881,7 @@ statistic as any percentile unless the number of days in the year is known.
     "fourth_highest_daily_max_8h": {
       "type": "double",
       "unit": "[ppb]",
-      "description": "Fourth-highest daily maximum eight-hour mean ozone mole fraction of the calendar year",
+      "description": "Fourth-highest daily maximum 8-hour mean",
       "examples": [68.0],
       "semanticRole": "observationValue",
       "derivation": "statistic",
@@ -1887,7 +1889,9 @@ statistic as any percentile unless the number of days in the year is known.
       "phenomenonTimeRelation": "interval"
     }
   },
-  "required": ["site", "year_start", "year_end", "fourth_highest_daily_max_8h"],
+  "required": [
+    "site", "year_start", "year_end", "fourth_highest_daily_max_8h"
+  ],
   "additionalProperties": false
 }
 ~~~
@@ -2471,13 +2475,14 @@ processor can order two positions without implementing the definition.
 
 ~~~ json
 {
-  "$schema": "https://json-structure.org/meta/semantic-annotations/v0/#",
+  "$schema":
+  "https://json-structure.org/meta/semantic-annotations/v0/#",
   "$id": "https://schemas.example.org/racing-speed-observation",
   "name": "RacingSpeedObservation",
   "type": "object",
   "identity": ["observation_id"],
   "observedProperty": {
-    "reference": "https://catalog.example.org/observable-properties/vehicle-speed/v1",
+    "reference": "https://example.org/props/vehicle-speed/v1",
     "kind": "example-catalog"
   },
   "properties": {
@@ -2497,7 +2502,7 @@ processor can order two positions without implementing the definition.
       "properties": {
         "ordinal": {
           "type": "string",
-          "description": "Clock position rendered at fixed width and ordered lexically",
+          "description": "Fixed-width position, ordered lexically",
           "examples": ["2026-07-26/R/S03/L014/01250.5"]
         },
         "session": { "type": "string" },
@@ -2505,7 +2510,9 @@ processor can order two positions without implementing the definition.
         "lap": { "type": "uint32" },
         "distance_driven": { "type": "double", "unit": "m" }
       },
-      "required": ["ordinal", "session", "stint", "lap", "distance_driven"],
+      "required": [
+        "ordinal", "session", "stint", "lap", "distance_driven"
+      ],
       "additionalProperties": false
     },
     "speed": {
@@ -2522,11 +2529,11 @@ processor can order two positions without implementing the definition.
     "RaceClockPosition": {
       "name": "RaceClockPosition",
       "type": "object",
-      "description": "Motor-racing clock. A position is located by session, stint, lap, and distance driven within the lap. Stint numbering is entry-specific, and positions from different entries are comparable only within one session.",
+      "description": "Motor-racing clock.",
       "properties": {
         "clockPosition": {
           "type": "string",
-          "description": "Components rendered at fixed width, most significant first, so that positions sort lexically",
+          "description": "Fixed-width components, sorting lexically",
           "referenceRole": "position"
         },
         "session": { "type": "string" },
@@ -2539,6 +2546,10 @@ processor can order two positions without implementing the definition.
   }
 }
 ~~~
+
+The clock locates a position by session, stint, lap, and distance driven within
+the lap, with the components rendered most significant first in
+`clockPosition`. Stint numbering is entry-specific.
 
 The compound position is comparable only under the rules of the identified
 regime: equal stint, lap, and distance values do not imply equal positions
@@ -2660,7 +2671,7 @@ A cadence too rapid for civil time, stated on a clock of its own:
   "properties": {
     "frame_index": {
       "type": "int64",
-      "description": "Position of this frame, counted in samples from the start of the delivery",
+      "description": "Sample count from the start of delivery",
       "semanticRole": "phenomenonTime",
       "temporalReferenceSystem": {
         "reference": { "$ref": "#/definitions/AudioSampleClock" },
@@ -2688,11 +2699,11 @@ A cadence too rapid for civil time, stated on a clock of its own:
     "AudioSampleClock": {
       "name": "AudioSampleClock",
       "type": "object",
-      "description": "A position is a count of sample frames from the start of the delivery. The clock advances one unit per frame and does not reset within a delivery, so positions sort numerically and are comparable within one delivery and not across deliveries. Elapsed seconds are the count divided by the frame rate of the delivery; this meta-type does not supply that rate.",
+      "description": "Sample-frame count clock for one delivery.",
       "properties": {
         "frame_count": {
           "type": "int64",
-          "description": "Count of sample frames from the start of the delivery.",
+          "description": "Sample count from the start of delivery.",
           "referenceRole": "position"
         }
       },
@@ -2702,6 +2713,11 @@ A cadence too rapid for civil time, stated on a clock of its own:
   }
 }
 ~~~
+
+The clock advances one unit per frame and does not reset within a delivery, so
+positions sort numerically and are comparable within one delivery and not
+across deliveries. Elapsed seconds are the count divided by the frame rate of
+the delivery, which the meta-type does not supply.
 
 The cadence here is one sample-clock unit and is exact. Written as a duration it
 could only have been approximated: `PT0.0000208333S` is short of a
@@ -3155,9 +3171,20 @@ and are carried separately.
       "type": "tuple",
       "description": "Geocentric Solar Ecliptic frame.",
       "properties": {
-        "x": { "type": "double", "description": "Earth towards the Sun." },
-        "y": { "type": "double", "description": "In the ecliptic plane, towards dusk, completing a right-handed set." },
-        "z": { "type": "double", "description": "Parallel to the ecliptic pole, positive north." }
+        "x": {
+          "type": "double",
+          "description": "Earth towards the Sun."
+        },
+        "y": {
+          "type": "double",
+          "description":
+          "In the ecliptic plane, towards dusk, right-handed."
+        },
+        "z": {
+          "type": "double",
+          "description":
+          "Parallel to the ecliptic pole, positive north."
+        }
       },
       "tuple": ["x", "y", "z"]
     },
@@ -3166,9 +3193,20 @@ and are carried separately.
       "type": "tuple",
       "description": "Geocentric Solar Magnetospheric frame.",
       "properties": {
-        "x": { "type": "double", "description": "Earth towards the Sun." },
-        "y": { "type": "double", "description": "Perpendicular to the geomagnetic dipole axis, completing a right-handed set." },
-        "z": { "type": "double", "description": "In the plane of x and the geomagnetic dipole axis, positive towards the northern magnetic pole." }
+        "x": {
+          "type": "double",
+          "description": "Earth towards the Sun."
+        },
+        "y": {
+          "type": "double",
+          "description":
+          "Perpendicular to the dipole axis, right-handed."
+        },
+        "z": {
+          "type": "double",
+          "description":
+          "In the plane of x and the dipole axis, positive north."
+        }
       },
       "tuple": ["x", "y", "z"]
     }
@@ -3240,9 +3278,18 @@ each coefficient is picked out by three axes of the same crystal frame.
   "tensorReferenceFrames": [
     {
       "frames": [
-        { "reference": { "$ref": "#/definitions/CrystalAxes" }, "kind": "type" },
-        { "reference": { "$ref": "#/definitions/CrystalAxes" }, "kind": "type" },
-        { "reference": { "$ref": "#/definitions/CrystalAxes" }, "kind": "type" }
+        {
+          "reference": { "$ref": "#/definitions/CrystalAxes" },
+          "kind": "type"
+        },
+        {
+          "reference": { "$ref": "#/definitions/CrystalAxes" },
+          "kind": "type"
+        },
+        {
+          "reference": { "$ref": "#/definitions/CrystalAxes" },
+          "kind": "type"
+        }
       ],
       "components": "d"
     }
@@ -3271,11 +3318,20 @@ each coefficient is picked out by three axes of the same crystal frame.
     "CrystalAxes": {
       "name": "CrystalAxes",
       "type": "tuple",
-      "description": "Orthogonal frame the coefficients of this material are published against, fixed by the symmetry of the crystal.",
+      "description": "Orthogonal frame fixed by crystal symmetry.",
       "properties": {
-        "x1": { "type": "double", "description": "First axis of that frame." },
-        "x2": { "type": "double", "description": "Second axis, at a right angle to x1." },
-        "x3": { "type": "double", "description": "Third axis, completing a right-handed set." }
+        "x1": {
+          "type": "double",
+          "description": "First axis of that frame."
+        },
+        "x2": {
+          "type": "double",
+          "description": "Second axis, at a right angle to x1."
+        },
+        "x3": {
+          "type": "double",
+          "description": "Third axis, right-handed."
+        }
       },
       "tuple": ["x1", "x2", "x3"]
     }
@@ -3356,8 +3412,14 @@ order. What a reader of the text file must look up, the schema carries.
   "tensorReferenceFrames": [
     {
       "frames": [
-        { "reference": { "$ref": "#/definitions/UseFrame" }, "kind": "type" },
-        { "reference": { "$ref": "#/definitions/UseFrame" }, "kind": "type" }
+        {
+          "reference": { "$ref": "#/definitions/UseFrame" },
+          "kind": "type"
+        },
+        {
+          "reference": { "$ref": "#/definitions/UseFrame" },
+          "kind": "type"
+        }
       ],
       "symmetry": "symmetric",
       "components": [
@@ -3397,7 +3459,8 @@ order. What a reader of the text file must look up, the schema carries.
     "UseFrame": {
       "name": "UseFrame",
       "type": "tuple",
-      "description": "Spherical frame of the Global CMT catalogue, oriented at the centroid position this record carries under lat and lon.",
+      "description":
+      "Spherical frame of the Global CMT catalogue, at lat/lon.",
       "properties": {
         "r": { "type": "double", "description": "Up." },
         "t": { "type": "double", "description": "South." },
@@ -3654,7 +3717,10 @@ of the annotation.
   "type": "object",
   "frameTransforms": [
     {
-      "from": { "reference": { "$ref": "#/definitions/BodyFrame" }, "kind": "type" },
+      "from": {
+        "reference": { "$ref": "#/definitions/BodyFrame" },
+        "kind": "type"
+      },
       "to": {
         "reference": "http://www.opengis.net/def/crs/EPSG/0/4978",
         "kind": "ogc-crs"
@@ -3678,9 +3744,18 @@ of the annotation.
       "type": "tuple",
       "description": "Spacecraft body frame.",
       "properties": {
-        "x": { "type": "double", "description": "Along the instrument boresight." },
-        "y": { "type": "double", "description": "Completes a right-handed set." },
-        "z": { "type": "double", "description": "Towards the solar array hinge." }
+        "x": {
+          "type": "double",
+          "description": "Along the instrument boresight."
+        },
+        "y": {
+          "type": "double",
+          "description": "Completes a right-handed set."
+        },
+        "z": {
+          "type": "double",
+          "description": "Towards the solar array hinge."
+        }
       },
       "tuple": ["x", "y", "z"]
     }
@@ -3834,8 +3909,14 @@ the reader, as declarations.
   "type": "object",
   "frameTransforms": [
     {
-      "from": { "reference": { "$ref": "#/definitions/LaserFrame" }, "kind": "type" },
-      "to": { "reference": { "$ref": "#/definitions/CameraFrame" }, "kind": "type" },
+      "from": {
+        "reference": { "$ref": "#/definitions/LaserFrame" },
+        "kind": "type"
+      },
+      "to": {
+        "reference": { "$ref": "#/definitions/CameraFrame" },
+        "kind": "type"
+      },
       "encoding": "rotationMatrix",
       "components": "rotation",
       "translation": ["tx", "ty", "tz"]
@@ -3866,8 +3947,14 @@ the reader, as declarations.
       "type": "tuple",
       "description": "Frame of the rotating laser scanner.",
       "properties": {
-        "x": { "type": "double", "description": "Forward along the vehicle." },
-        "y": { "type": "double", "description": "To the left of the vehicle." },
+        "x": {
+          "type": "double",
+          "description": "Forward along the vehicle."
+        },
+        "y": {
+          "type": "double",
+          "description": "To the left of the vehicle."
+        },
         "z": { "type": "double", "description": "Up." }
       },
       "tuple": ["x", "y", "z"]
@@ -3877,9 +3964,18 @@ the reader, as declarations.
       "type": "tuple",
       "description": "Frame of the reference camera.",
       "properties": {
-        "x": { "type": "double", "description": "To the right in the image." },
-        "y": { "type": "double", "description": "Down in the image." },
-        "z": { "type": "double", "description": "Along the optical axis, away from the camera." }
+        "x": {
+          "type": "double",
+          "description": "To the right in the image."
+        },
+        "y": {
+          "type": "double",
+          "description": "Down in the image."
+        },
+        "z": {
+          "type": "double",
+          "description": "Along the optical axis, from the camera."
+        }
       },
       "tuple": ["x", "y", "z"]
     }
@@ -4030,11 +4126,14 @@ measure values, which is why the `measure` rule requires the annotated property
 to carry one:
 
 ~~~ json
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "WsdotStateRouteLocation",
   "type": "object",
   "linearReferenceSystem": {
-    "reference": "https://data.wsdot.wa.gov/arcgis/rest/services/Shared/LRSData/FeatureServer/9",
+    "reference": "https://data.wsdot.wa.gov/arcgis/rest/services/\
+        Shared/LRSData/FeatureServer/9",
     "kind": "lrs-network",
     "linearElement": "route_identifier",
     "measure": "arm",
@@ -4270,7 +4369,8 @@ stylesheet would write it.
   "type": "object",
   "colorSpaces": [
     {
-      "reference": "https://www.w3.org/TR/css-color-4/#predefined-sRGB",
+      "reference":
+      "https://www.w3.org/TR/css-color-4/#predefined-sRGB",
       "kind": "iec",
       "channels": ["value"],
       "packing": "hexRgba"
@@ -4391,17 +4491,21 @@ a color space in the colorimetric sense at all; the other is a set of device
 control values whose meaning is precisely the measurement it is paired with.
 
 ~~~ json
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "CharacterizationPatch",
   "type": "object",
   "colorSpaces": [
     {
-      "reference": "https://registry.color.org/cmyk-registry/fogra51",
+      "reference":
+      "https://registry.color.org/cmyk-registry/fogra51",
       "kind": "icc-registry",
       "channels": ["c", "m", "y", "k"]
     },
     {
-      "reference": "https://cie.co.at/publications/colorimetry-part-4-cie-1976-lab-colour-space-1",
+      "reference": "https://cie.co.at/publications/\
+          colorimetry-part-4-cie-1976-lab-colour-space-1",
       "kind": "cie",
       "channels": ["lStar", "aStar", "bStar"],
       "illuminant": "D50",
@@ -4687,12 +4791,15 @@ The record below is one pixel of a nine-band Operational Land Imager scene,
 whose bands are those of {{USGS-LANDSAT}}, carried as reflectance.
 
 ~~~ json
+========== NOTE: '\' line wrapping per RFC 8792 ===========
+
 {
   "name": "OliPixel",
   "type": "object",
   "spectralBands": [
     {
-      "reference": "https://www.usgs.gov/faqs/what-are-band-designations-landsat-satellites#landsat-8-9-oli",
+      "reference": "https://www.usgs.gov/faqs/\
+          what-are-band-designations-landsat-satellites",
       "kind": "sensor",
       "bands": [
         "coastalAerosol", "blue", "green", "red",
@@ -4810,7 +4917,11 @@ A processor MUST NOT infer:
   or level reference, from names, samples, units, or the number of members
   present;
 * that members sharing a name prefix, a unit, or an observed property are the
-  components of one vector quantity; or
+  components of one vector quantity;
+* an observation entity, or any class, identity, or relationship of an
+  observation model, from the roles a schema declares;
+* an instruction to perform, repeat, or recompute an operation from a keyword
+  that names one; or
 * permission to aggregate, convert, transform, reject outliers, or infer
   causality.
 
@@ -4866,7 +4977,7 @@ not conforming, and a processor MUST NOT select between them.
 
 # Extension Meta-Schema {#extension-meta-schema}
 
-The extension meta-schema will be published at:
+The extension meta-schema is published at:
 
 `https://json-structure.org/meta/semantic-annotations/v0/#`
 
@@ -4887,7 +4998,7 @@ about a property that an annotation names and every rule about a definition that
 a `reference` identifies, are checked against the effective schema rather than by
 the meta-schema alone. No companion reference type or import is required.
 
-# Security and Privacy Considerations {#security-considerations}
+# Security Considerations {#security-considerations}
 
 Incorrect or malicious catalog entries, labels, mappings,
 feature identities, or procedure identities can cause results from different
@@ -4932,16 +5043,20 @@ measure origin, unit, or direction can place a feature incorrectly. Processors
 MUST NOT perform temporal, coordinate, linear, or unit transformations without
 validating authoritative definitions.
 
+Remote registries, schemas, vocabularies, procedures, mapping targets, and
+reference systems are untrusted input. Implementations SHOULD use HTTPS where
+available, bounded retrieval, caching with version awareness, allow-lists where
+appropriate, cycle detection, and explicit trust decisions.
+
+## Privacy Considerations {#privacy-considerations}
+
 Catalog labels and mappings, procedure and feature identities, locations,
 times, statuses, and quality can reveal sensitive operations or subjects. Hidden
 labels are not an access-control mechanism. This specification grants no access and
 does not replace minimization, privacy review, retention, or export controls.
 
-Remote registries, schemas, vocabularies, procedures, mapping targets, and
-reference systems are untrusted input. Implementations SHOULD use HTTPS where
-available, bounded retrieval, caching with version awareness, allow-lists where
-appropriate, cycle detection, and explicit trust decisions. Dereferencing can
-disclose processor interest.
+Dereferencing a `reference` can disclose processor interest to the party that
+serves the definition.
 
 # IANA Considerations {#iana-considerations}
 
@@ -5129,7 +5244,7 @@ unresolved `reference` is indeterminate rather than incorrect. Under `kind`
 `type` the list is a meta-type in the schema and `reference` is the type
 reference `{ "$ref": <JSON Pointer> }`, not a URI.
 
-# Changes from draft-vasters-json-structure-semantic-annotations-00
+# Change Log
 {:numbered="false"}
 
 - Initial version.

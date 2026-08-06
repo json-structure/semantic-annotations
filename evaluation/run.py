@@ -481,7 +481,7 @@ def run_sample(sample: Sample, stripper, subject: models.Client,
 # been dropped in as `{sample}.supervisor.json`. The arms are labelled at emit
 # time so that no later step can influence the assignment.
 
-SPEC_SOURCE = HERE.parent / "draft-vasters-json-structure-semantic-annotations.md"
+SPEC_SOURCE = HERE.parent / "draft-vasters-json-structure-sem-ann.md"
 SPEC_COPY = "specification.md"
 
 SPEC_NOTE = """

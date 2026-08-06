@@ -19,7 +19,7 @@ __pycache__/
 /versioned/
 Gemfile.lock
 archive.json
-draft-vasters-json-structure-semantic-annotations.xml
+draft-vasters-json-structure-sem-ann.xml
 /evaluation/results/
 /evaluation/__pycache__/
 package-lock.json
