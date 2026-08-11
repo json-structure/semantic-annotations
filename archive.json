@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-09T00:52:03.350378+00:00",
+  "timestamp": "2026-08-11T00:53:45.933292+00:00",
   "repo": "json-structure/semantic-annotations",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOTuiJJc8AAAABMHlBAQ",
+      "title": "Annotation entries admit neither description nor concepts; \frames entries are indistinguishable",
+      "url": "https://github.com/json-structure/semantic-annotations/issues/1",
+      "state": "OPEN",
+      "author": "clemensv",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Annotation-internal objects \u2014 the repeated entries inside `tensorReferenceFrames`, `vectorReferenceFrames`, `frameTransforms`, `colorSpaces`, `audioChannels`, `spectralBands`, and the component entries inside them \u2014 admit neither a `description` nor a `concepts` member. Every one of them is `\"additionalProperties\": false`, so an author cannot add either. Nothing in the schema can say what an individual entry is for.\r\n\r\nThe draft is aware of the problem and delegates it to the referenced definition. From the Vertical and Compound Systems section:\r\n\r\n> The axis direction comes from the referenced definition and not from the annotation, so whether the axis is positive up or positive down is a fact about the identified system. Where `kind` is `type`, the `description` of the meta-type or of its elements states it.\r\n\r\nThat works when the entries reference different definitions. It fails when they reference the same one, because one shared description cannot say different things about different positions.\r\n\r\n## The acute case: `frames`\r\n\r\n`FrameReference` carries `reference`, `kind`, and an optional `variance`, and nothing else. It binds no members. Its whole meaning is its position in the array. Consider a piezoelectric strain tensor over one set of crystal axes:\r\n\r\n```json\r\n\"tensorReferenceFrames\": [\r\n  {\r\n    \"frames\": [\r\n      { \"reference\": { \"$ref\": \"#/definitions/CrystalAxes\" }, \"kind\": \"type\" },\r\n      { \"reference\": { \"$ref\": \"#/definitions/CrystalAxes\" }, \"kind\": \"type\" },\r\n      { \"reference\": { \"$ref\": \"#/definitions/CrystalAxes\" }, \"kind\": \"type\" }\r\n    ],\r\n    \"components\": \"d\"\r\n  }\r\n]\r\n```\r\n\r\nThree byte-identical entries. Index 0 is the axis of the applied field; indices 1 and 2 are the axes of the strain it produces. Neither the annotation nor a description on `CrystalAxes` can carry that distinction, and no consumer or documentation generator can recover it.\r\n\r\nThis is not an edge case. The draft names the repeated-frame case as typical:\r\n\r\n> One frame MAY be named by more than one entry, and is so named for a stress, a strain, or a seismic moment tensor.\r\n\r\nSo the annotation cannot label index positions for exactly the tensors it cites as the common ones. `FrameReference` is the worst affected because it is the only entry type that binds nothing \u2014 `VectorReferenceFrame`, `AudioChannel`, and `SpectralBand` at least name their members through `components`, `channels`, and `bands`, so a reader has something to go on.\r\n\r\n## `concepts` on entries\r\n\r\n`concepts` is currently reachable only through `ConceptsAddIn`, which attaches to a type definition and to property, collection item, map value, and choice member schemas. An annotation entry is none of those.\r\n\r\nAn entry is often exactly the thing worth pointing at a published term. The applied-field index of a piezoelectric tensor, a spectral band set, an audio channel group, a color space entry \u2014 each denotes something a vocabulary already names, and the entry is where that identity belongs. Today it has nowhere to go. The same argument applies to the component entries of `tensorComponents` and to `codedValues`, so this is probably worth doing uniformly rather than only where it was first noticed.\r\n\r\nNote that `concepts` and `description` are not substitutes for each other here. One is for a machine, the other for a person, and the entries want both.\r\n\r\n## Proposal\r\n\r\n1. Permit an optional `description` on every annotation-internal object, most importantly on `FrameReference`.\r\n2. Permit an optional `concepts` on the same objects, with the same shape and semantics `ConceptsAddIn` already defines.\r\n\r\nBoth are additive and neither changes the meaning of an existing schema. Factoring them into a small abstract base that the entry types extend would keep the meta-schema from repeating itself, and would make it obvious that the rule is uniform.\r\n\r\nThe alternative for point 1 \u2014 leaving the descriptive burden on the referenced definition \u2014 should be stated explicitly in the draft if it is kept, together with an acknowledgement that it does not reach the repeated-frame case.\r\n",
+      "createdAt": "2026-08-10T08:35:49Z",
+      "updatedAt": "2026-08-10T08:35:49Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
